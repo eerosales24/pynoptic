@@ -1,0 +1,15 @@
+[project]
+name = "pynoptic"
+version = "0.1.0"
+description = "A profiler that combines static and dynamic metrics to build a multidimensional view of Python code."
+readme = "README.md"
+authors = [
+    { name = "DiegoMunevar2007", email = "d.munevar@uniandes.edu.co" },
+    { name = "eerosales24", email = "ee.rosales24@uniandes.edu.co"}
+]
+requires-python = ">=3.11"
+dependencies = []
+
+[build-system]
+requires = ["uv_build>=0.11.9,<0.12.0"]
+build-backend = "uv_build"
