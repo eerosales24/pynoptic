@@ -8,8 +8,52 @@ authors = [
     { name = "eerosales24", email = "ee.rosales24@uniandes.edu.co"}
 ]
 requires-python = ">=3.11"
-dependencies = []
+
+dependencies = [
+    "dynapyt>=4.1.0",
+    "semgrep>=1.177.0",
+]
+
+[project.scripts]
+pynoptic = "pynoptic.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=6.0",
+    "pyyaml>=6.0",
+    "ruff>=0.7",
+    "mypy>=1.13",
+]
 
 [build-system]
-requires = ["uv_build>=0.11.9,<0.12.0"]
+requires = ["uv-build>=0.11.9,<0.13"]
 build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+filterwarnings = ["error"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/pynoptic/restrictions.py" = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["pynoptic"]
+
+[[tool.mypy.overrides]]
+module = ["dynapyt.*", "yaml"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["pynoptic.dynamic.analysis"]
+disallow_subclassing_any = false
