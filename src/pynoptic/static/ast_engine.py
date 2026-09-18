@@ -74,59 +74,59 @@ class _AstAuditor(ast.NodeVisitor):
         self.generic_visit(node)
 
     def visit_Dict(self, node: ast.Dict) -> None:
-        """Detect dictionary displays such as {"a": 1} (R41)."""
-        self._emit("R41", node)
+        """Detect dictionary displays such as {"a": 1} (R36)."""
+        self._emit("R36", node)
         self.generic_visit(node)
 
     def visit_Set(self, node: ast.Set) -> None:
-        """Detect set displays such as {1, 2} (R123)."""
-        self._emit("R123", node)
+        """Detect set displays such as {1, 2} (R118)."""
+        self._emit("R118", node)
         self.generic_visit(node)
 
     def visit_List(self, node: ast.List) -> None:
-        """Detect list displays such as [1, 2] (R53)."""
-        self._emit("R53", node)
+        """Detect list displays such as [1, 2] (R48)."""
+        self._emit("R48", node)
         self.generic_visit(node)
 
     def visit_Tuple(self, node: ast.Tuple) -> None:
-        """Detect tuple displays such as (1, 2) (R220)."""
-        self._emit("R220", node)
+        """Detect tuple displays such as (1, 2) (R215)."""
+        self._emit("R215", node)
         self.generic_visit(node)
 
     def visit_Lambda(self, node: ast.Lambda) -> None:
-        """Detect anonymous functions and their signature (R155, R47/R153)."""
-        self._emit("R155", node)
+        """Detect anonymous functions and their signature (R150, R42/R148)."""
+        self._emit("R150", node)
         self._check_signature(node.args, node)
         self.generic_visit(node)
 
     def visit_Call(self, node: ast.Call) -> None:
-        """Detect keyword arguments at a call site (R47)."""
+        """Detect keyword arguments at a call site (R42)."""
         if node.keywords:
-            self._emit("R47", node)
+            self._emit("R42", node)
         self.generic_visit(node)
 
     def visit_Assign(self, node: ast.Assign) -> None:
-        """Detect chained assignment and tuple packing/unpacking (R79/R80/R87/R88)."""
+        """Detect chained assignment and tuple packing/unpacking (R74/R75/R82/R83)."""
         if len(node.targets) > 1:
-            self._emit("R87", node)
+            self._emit("R82", node)
         if isinstance(node.value, ast.Tuple):
-            self._emit("R79", node)
+            self._emit("R74", node)
         for target in node.targets:
             self._check_unpacking(target, node)
         self.generic_visit(node)
 
     def visit_For(self, node: ast.For) -> None:
-        """Detect starred unpacking in a for target (R88)."""
+        """Detect starred unpacking in a for target (R83)."""
         self._check_starred_target(node.target, node)
         self.generic_visit(node)
 
     def visit_AsyncFor(self, node: ast.AsyncFor) -> None:
-        """Detect starred unpacking in an async for target (R88)."""
+        """Detect starred unpacking in an async for target (R83)."""
         self._check_starred_target(node.target, node)
         self.generic_visit(node)
 
     def _check_unpacking(self, target: ast.AST, node: ast.AST) -> None:
-        """Emit R88 for a starred target, otherwise R80.
+        """Emit R83 for a starred target, otherwise R75.
 
         Parameters:
             - target: The assignment target to inspect.
@@ -134,19 +134,19 @@ class _AstAuditor(ast.NodeVisitor):
         """
         if isinstance(target, (ast.Tuple, ast.List)):
             if _contains_starred(target):
-                self._emit("R88", node)
+                self._emit("R83", node)
             else:
-                self._emit("R80", node)
+                self._emit("R75", node)
 
     def _check_starred_target(self, target: ast.AST, node: ast.AST) -> None:
-        """Emit R88 when a loop target contains a starred element.
+        """Emit R83 when a loop target contains a starred element.
 
         Parameters:
             - target: The loop target to inspect.
             - node: The statement to report the location of.
         """
         if isinstance(target, (ast.Tuple, ast.List)) and _contains_starred(target):
-            self._emit("R88", node)
+            self._emit("R83", node)
 
     def visit_FunctionDef(self, node: ast.FunctionDef) -> None:
         """Visit a regular function definition."""
@@ -157,65 +157,65 @@ class _AstAuditor(ast.NodeVisitor):
         self._visit_function(node)
 
     def _visit_function(self, node: ast.FunctionDef | ast.AsyncFunctionDef) -> None:
-        """Detect nested functions, decorators and signatures (R154/R175/R176/R47/R153).
+        """Detect nested functions, decorators and signatures (R149/R170/R171/R42/R148).
 
         Parameters:
             - node: The function definition being visited.
         """
         if self._function_depth > 0:
-            self._emit("R154", node)
+            self._emit("R149", node)
         if node.decorator_list:
-            self._emit("R175", node)
+            self._emit("R170", node)
             for decorator in node.decorator_list:
                 if _decorator_name(decorator) in {"staticmethod", "classmethod"}:
-                    self._emit("R176", node)
+                    self._emit("R171", node)
         self._check_signature(node.args, node)
         self._function_depth += 1
         self.generic_visit(node)
         self._function_depth -= 1
 
     def visit_ClassDef(self, node: ast.ClassDef) -> None:
-        """Detect decorated classes (R175/R176)."""
+        """Detect decorated classes (R170/R171)."""
         if node.decorator_list:
-            self._emit("R175", node)
+            self._emit("R170", node)
             for decorator in node.decorator_list:
                 if _decorator_name(decorator) in {"staticmethod", "classmethod"}:
-                    self._emit("R176", node)
+                    self._emit("R171", node)
         self.generic_visit(node)
 
     def _check_signature(self, args: ast.arguments, node: ast.AST) -> None:
-        """Emit R47 for defaults and R153 for *args/**kwargs.
+        """Emit R42 for defaults and R148 for *args/**kwargs.
 
         Parameters:
             - args: The function arguments to inspect.
             - node: The node to report the location of.
         """
         if args.defaults or any(d is not None for d in args.kw_defaults):
-            self._emit("R47", node)
+            self._emit("R42", node)
         if args.vararg is not None or args.kwarg is not None:
-            self._emit("R153", node)
+            self._emit("R148", node)
 
     def visit_Try(self, node: ast.Try) -> None:
-        """Detect a finally clause (R149)."""
+        """Detect a finally clause (R144)."""
         if node.finalbody:
-            self._emit("R149", node)
+            self._emit("R144", node)
         self.generic_visit(node)
 
     def visit_TryStar(self, node: ast.TryStar) -> None:
-        """Detect a finally clause on an except* block (R149)."""
+        """Detect a finally clause on an except* block (R144)."""
         if node.finalbody:
-            self._emit("R149", node)
+            self._emit("R144", node)
         self.generic_visit(node)
 
     def visit_If(self, node: ast.If) -> None:
-        """Detect the if __name__ == "__main__" guard (R161)."""
+        """Detect the if __name__ == "__main__" guard (R156)."""
         if _is_main_guard(node.test):
-            self._emit("R161", node)
+            self._emit("R156", node)
         self.generic_visit(node)
 
     def visit_Match(self, node: ast.Match) -> None:
-        """Detect structural pattern matching (R144)."""
-        self._emit("R144", node)
+        """Detect structural pattern matching (R139)."""
+        self._emit("R139", node)
         self.generic_visit(node)
 
 

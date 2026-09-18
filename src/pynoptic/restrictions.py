@@ -107,7 +107,7 @@ CATALOG: tuple[Restriction, ...] = (
         Level.L1,
         Tool.HYBRID,
         'Operator match + runtime observation',
-        note='`<`, `<=`, `>`, `>=` on sets are subset/superset tests (R141/R142) · DynaPyt only sees executed paths',
+        note='`<`, `<=`, `>`, `>=` on sets are subset/superset tests (R136/R137) · DynaPyt only sees executed paths',
         candidate=_sg('$X < $Y'),
         dynamic=(
             DynamicMatch(hook='comparison', names=('LessThan',), accepts=('float', 'int', 'str'), candidate='R6'),
@@ -119,7 +119,7 @@ CATALOG: tuple[Restriction, ...] = (
         Level.L1,
         Tool.HYBRID,
         'Operator match + runtime observation',
-        note='`<`, `<=`, `>`, `>=` on sets are subset/superset tests (R141/R142) · DynaPyt only sees executed paths',
+        note='`<`, `<=`, `>`, `>=` on sets are subset/superset tests (R136/R137) · DynaPyt only sees executed paths',
         candidate=_sg('$X <= $Y'),
         dynamic=(
             DynamicMatch(hook='comparison', names=('LessThanEqual',), accepts=('float', 'int', 'str'), candidate='R7'),
@@ -131,7 +131,7 @@ CATALOG: tuple[Restriction, ...] = (
         Level.L1,
         Tool.HYBRID,
         'Operator match + runtime observation',
-        note='`<`, `<=`, `>`, `>=` on sets are subset/superset tests (R141/R142) · DynaPyt only sees executed paths',
+        note='`<`, `<=`, `>`, `>=` on sets are subset/superset tests (R136/R137) · DynaPyt only sees executed paths',
         candidate=_sg('$X > $Y'),
         dynamic=(
             DynamicMatch(hook='comparison', names=('GreaterThan',), accepts=('float', 'int', 'str'), candidate='R8'),
@@ -143,7 +143,7 @@ CATALOG: tuple[Restriction, ...] = (
         Level.L1,
         Tool.HYBRID,
         'Operator match + runtime observation',
-        note='`<`, `<=`, `>`, `>=` on sets are subset/superset tests (R141/R142) · DynaPyt only sees executed paths',
+        note='`<`, `<=`, `>`, `>=` on sets are subset/superset tests (R136/R137) · DynaPyt only sees executed paths',
         candidate=_sg('$X >= $Y'),
         dynamic=(
             DynamicMatch(hook='comparison', names=('GreaterThanEqual',), accepts=('float', 'int', 'str'), candidate='R9'),
@@ -285,51 +285,6 @@ CATALOG: tuple[Restriction, ...] = (
     ),
     Restriction(
         'R26',
-        'Escape sequence `\\n`',
-        Level.L1,
-        Tool.SEMGREP,
-        'Lexical match (regex over source)',
-        note='`pattern-regex` over source; the AST normalizes escape sequences',
-        semgrep=_regex('\\\\n'),
-    ),
-    Restriction(
-        'R27',
-        'Escape sequence `\\t`',
-        Level.L1,
-        Tool.SEMGREP,
-        'Lexical match (regex over source)',
-        note='`pattern-regex` over source; the AST normalizes escape sequences',
-        semgrep=_regex('\\\\t'),
-    ),
-    Restriction(
-        'R28',
-        'Escape sequence `\\\\`',
-        Level.L1,
-        Tool.SEMGREP,
-        'Lexical match (regex over source)',
-        note='`pattern-regex` over source; the AST normalizes escape sequences',
-        semgrep=_regex('\\\\\\\\'),
-    ),
-    Restriction(
-        'R29',
-        "Escape sequence `\\'`",
-        Level.L1,
-        Tool.SEMGREP,
-        'Lexical match (regex over source)',
-        note='`pattern-regex` over source; the AST normalizes escape sequences',
-        semgrep=_regex("\\\\'"),
-    ),
-    Restriction(
-        'R30',
-        'Escape sequence `\\"`',
-        Level.L1,
-        Tool.SEMGREP,
-        'Lexical match (regex over source)',
-        note='`pattern-regex` over source; the AST normalizes escape sequences',
-        semgrep=_regex('\\\\"'),
-    ),
-    Restriction(
-        'R31',
         'str method `lower()`',
         Level.L1,
         Tool.SEMGREP,
@@ -337,7 +292,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('lower'),
     ),
     Restriction(
-        'R32',
+        'R27',
         'str method `upper()`',
         Level.L1,
         Tool.SEMGREP,
@@ -345,7 +300,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('upper'),
     ),
     Restriction(
-        'R33',
+        'R28',
         'str method `title()`',
         Level.L1,
         Tool.SEMGREP,
@@ -353,7 +308,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('title'),
     ),
     Restriction(
-        'R34',
+        'R29',
         'str method `swapcase()`',
         Level.L1,
         Tool.SEMGREP,
@@ -361,7 +316,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('swapcase'),
     ),
     Restriction(
-        'R35',
+        'R30',
         'str method `replace()`',
         Level.L1,
         Tool.SEMGREP,
@@ -369,7 +324,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('replace'),
     ),
     Restriction(
-        'R36',
+        'R31',
         'str method `find()`',
         Level.L1,
         Tool.SEMGREP,
@@ -377,7 +332,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('find'),
     ),
     Restriction(
-        'R37',
+        'R32',
         'str method `count()`',
         Level.L1,
         Tool.HYBRID,
@@ -385,11 +340,11 @@ CATALOG: tuple[Restriction, ...] = (
         note='Method name shared across builtin types · DynaPyt only sees executed paths',
         candidate=_sg('$X.count(...)'),
         dynamic=(
-            DynamicMatch(hook='pre_call', names=('count',), accepts=('str',), candidate='R37'),
+            DynamicMatch(hook='pre_call', names=('count',), accepts=('str',), candidate='R32'),
         ),
     ),
     Restriction(
-        'R38',
+        'R33',
         'str method `format()`',
         Level.L1,
         Tool.SEMGREP,
@@ -397,7 +352,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('format'),
     ),
     Restriction(
-        'R39',
+        'R34',
         'f-strings `f"..."`',
         Level.L1,
         Tool.SEMGREP,
@@ -406,7 +361,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('f"..."'),
     ),
     Restriction(
-        'R40',
+        'R35',
         'Dictionary constructor `dict()`',
         Level.L1,
         Tool.SEMGREP,
@@ -414,7 +369,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('dict'),
     ),
     Restriction(
-        'R41',
+        'R36',
         'Dictionary display `{key: value}`',
         Level.L1,
         Tool.AST,
@@ -423,7 +378,7 @@ CATALOG: tuple[Restriction, ...] = (
         ast='dict_display',
     ),
     Restriction(
-        'R42',
+        'R37',
         'dict method `get()`',
         Level.L1,
         Tool.SEMGREP,
@@ -431,7 +386,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('get'),
     ),
     Restriction(
-        'R43',
+        'R38',
         'Loop `while`',
         Level.L2,
         Tool.SEMGREP,
@@ -439,7 +394,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('while $C: ...'),
     ),
     Restriction(
-        'R44',
+        'R39',
         'Loop `for`',
         Level.L2,
         Tool.SEMGREP,
@@ -447,7 +402,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('for $X in $Y: ...'),
     ),
     Restriction(
-        'R45',
+        'R40',
         'Integer sequence `range()`',
         Level.L2,
         Tool.SEMGREP,
@@ -455,7 +410,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('range'),
     ),
     Restriction(
-        'R46',
+        'R41',
         'Deletion statement `del`',
         Level.L2,
         Tool.SEMGREP,
@@ -463,7 +418,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('del $X'),
     ),
     Restriction(
-        'R47',
+        'R42',
         'Keyword and default arguments `f(x, n=0)`',
         Level.L2,
         Tool.AST,
@@ -472,19 +427,19 @@ CATALOG: tuple[Restriction, ...] = (
         ast='keyword_or_default_arguments',
     ),
     Restriction(
-        'R48',
+        'R43',
         'String slicing `s[i:j:k]`',
         Level.L2,
         Tool.HYBRID,
         'Subscript/slice-shape match + runtime observation',
-        note='R48/R54/R78 share one pattern; the base type decides · DynaPyt only sees executed paths',
+        note='R43/R49/R73 share one pattern; the base type decides · DynaPyt only sees executed paths',
         candidate=_either('$X[$A:$B]', '$X[$A:]', '$X[:$B]', '$X[:]', '$X[$A:$B:$C]', '$X[::$C]', '$X[$A::$C]', '$X[:$B:$C]'),
         dynamic=(
-            DynamicMatch(hook='read_subscript', names=('slice',), accepts=('str',), candidate='R48'),
+            DynamicMatch(hook='read_subscript', names=('slice',), accepts=('str',), candidate='R43'),
         ),
     ),
     Restriction(
-        'R49',
+        'R44',
         'str method `split()`',
         Level.L2,
         Tool.SEMGREP,
@@ -492,7 +447,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('split'),
     ),
     Restriction(
-        'R50',
+        'R45',
         'str method `join()`',
         Level.L2,
         Tool.SEMGREP,
@@ -500,7 +455,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('join'),
     ),
     Restriction(
-        'R51',
+        'R46',
         'str method `strip()`',
         Level.L2,
         Tool.SEMGREP,
@@ -508,7 +463,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('strip'),
     ),
     Restriction(
-        'R52',
+        'R47',
         'List constructor `list()`',
         Level.L2,
         Tool.SEMGREP,
@@ -516,7 +471,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('list'),
     ),
     Restriction(
-        'R53',
+        'R48',
         'List display `[...]`',
         Level.L2,
         Tool.AST,
@@ -525,18 +480,18 @@ CATALOG: tuple[Restriction, ...] = (
         ast='list_display',
     ),
     Restriction(
-        'R54',
+        'R49',
         'List slicing `lst[i:j:k]`',
         Level.L2,
         Tool.HYBRID,
         'Subscript/slice-shape match + runtime observation',
-        note='R48/R54/R78 share one pattern; the base type decides · DynaPyt only sees executed paths',
+        note='R43/R49/R73 share one pattern; the base type decides · DynaPyt only sees executed paths',
         dynamic=(
-            DynamicMatch(hook='read_subscript', names=('slice',), accepts=('list',), candidate='R48'),
+            DynamicMatch(hook='read_subscript', names=('slice',), accepts=('list',), candidate='R43'),
         ),
     ),
     Restriction(
-        'R55',
+        'R50',
         'List repetition `lst * n`',
         Level.L2,
         Tool.HYBRID,
@@ -544,11 +499,11 @@ CATALOG: tuple[Restriction, ...] = (
         note='Collides with numeric arithmetic · DynaPyt only sees executed paths',
         candidate=_sg('$X * $Y'),
         dynamic=(
-            DynamicMatch(hook='binary_operation', names=('Multiply',), accepts=('list',), candidate='R55'),
+            DynamicMatch(hook='binary_operation', names=('Multiply',), accepts=('list',), candidate='R50'),
         ),
     ),
     Restriction(
-        'R56',
+        'R51',
         'List concatenation `lst1 + lst2`',
         Level.L2,
         Tool.HYBRID,
@@ -556,11 +511,11 @@ CATALOG: tuple[Restriction, ...] = (
         note='Collides with numeric arithmetic · DynaPyt only sees executed paths',
         candidate=_sg('$X + $Y'),
         dynamic=(
-            DynamicMatch(hook='binary_operation', names=('Add',), accepts=('list',), candidate='R56'),
+            DynamicMatch(hook='binary_operation', names=('Add',), accepts=('list',), candidate='R51'),
         ),
     ),
     Restriction(
-        'R57',
+        'R52',
         'list method `append()`',
         Level.L2,
         Tool.SEMGREP,
@@ -568,7 +523,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('append'),
     ),
     Restriction(
-        'R58',
+        'R53',
         'list method `insert()`',
         Level.L2,
         Tool.SEMGREP,
@@ -576,7 +531,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('insert'),
     ),
     Restriction(
-        'R59',
+        'R54',
         'list method `extend()`',
         Level.L2,
         Tool.SEMGREP,
@@ -584,7 +539,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('extend'),
     ),
     Restriction(
-        'R60',
+        'R55',
         'list method `remove()`',
         Level.L2,
         Tool.HYBRID,
@@ -592,11 +547,11 @@ CATALOG: tuple[Restriction, ...] = (
         note='Method name shared across builtin types · DynaPyt only sees executed paths',
         candidate=_sg('$X.remove(...)'),
         dynamic=(
-            DynamicMatch(hook='pre_call', names=('remove',), accepts=('list',), candidate='R60'),
+            DynamicMatch(hook='pre_call', names=('remove',), accepts=('list',), candidate='R55'),
         ),
     ),
     Restriction(
-        'R61',
+        'R56',
         'list method `pop()`',
         Level.L2,
         Tool.HYBRID,
@@ -604,11 +559,11 @@ CATALOG: tuple[Restriction, ...] = (
         note='Method name shared across builtin types · DynaPyt only sees executed paths',
         candidate=_sg('$X.pop(...)'),
         dynamic=(
-            DynamicMatch(hook='pre_call', names=('pop',), accepts=('list',), candidate='R61'),
+            DynamicMatch(hook='pre_call', names=('pop',), accepts=('list',), candidate='R56'),
         ),
     ),
     Restriction(
-        'R62',
+        'R57',
         'list method `clear()`',
         Level.L2,
         Tool.HYBRID,
@@ -616,11 +571,11 @@ CATALOG: tuple[Restriction, ...] = (
         note='Method name shared across builtin types · DynaPyt only sees executed paths',
         candidate=_sg('$X.clear(...)'),
         dynamic=(
-            DynamicMatch(hook='pre_call', names=('clear',), accepts=('list',), candidate='R62'),
+            DynamicMatch(hook='pre_call', names=('clear',), accepts=('list',), candidate='R57'),
         ),
     ),
     Restriction(
-        'R63',
+        'R58',
         'list method `index()`',
         Level.L2,
         Tool.HYBRID,
@@ -628,22 +583,22 @@ CATALOG: tuple[Restriction, ...] = (
         note='Method name shared across builtin types · DynaPyt only sees executed paths',
         candidate=_sg('$X.index(...)'),
         dynamic=(
-            DynamicMatch(hook='pre_call', names=('index',), accepts=('list',), candidate='R63'),
+            DynamicMatch(hook='pre_call', names=('index',), accepts=('list',), candidate='R58'),
         ),
     ),
     Restriction(
-        'R64',
+        'R59',
         'list method `count()`',
         Level.L2,
         Tool.HYBRID,
         'Method-name match + runtime observation',
         note='Method name shared across builtin types · DynaPyt only sees executed paths',
         dynamic=(
-            DynamicMatch(hook='pre_call', names=('count',), accepts=('list',), candidate='R37'),
+            DynamicMatch(hook='pre_call', names=('count',), accepts=('list',), candidate='R32'),
         ),
     ),
     Restriction(
-        'R65',
+        'R60',
         'list method `sort()`',
         Level.L2,
         Tool.SEMGREP,
@@ -651,7 +606,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('sort'),
     ),
     Restriction(
-        'R66',
+        'R61',
         'list method `reverse()`',
         Level.L2,
         Tool.SEMGREP,
@@ -659,7 +614,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('reverse'),
     ),
     Restriction(
-        'R67',
+        'R62',
         'list method `copy()`',
         Level.L2,
         Tool.HYBRID,
@@ -667,22 +622,22 @@ CATALOG: tuple[Restriction, ...] = (
         note='Method name shared across builtin types · DynaPyt only sees executed paths',
         candidate=_sg('$X.copy(...)'),
         dynamic=(
-            DynamicMatch(hook='pre_call', names=('copy',), accepts=('list',), candidate='R67'),
+            DynamicMatch(hook='pre_call', names=('copy',), accepts=('list',), candidate='R62'),
         ),
     ),
     Restriction(
-        'R68',
+        'R63',
         'dict method `copy()`',
         Level.L2,
         Tool.HYBRID,
         'Method-name match + runtime observation',
         note='Method name shared across builtin types · DynaPyt only sees executed paths',
         dynamic=(
-            DynamicMatch(hook='pre_call', names=('copy',), accepts=('dict',), candidate='R67'),
+            DynamicMatch(hook='pre_call', names=('copy',), accepts=('dict',), candidate='R62'),
         ),
     ),
     Restriction(
-        'R69',
+        'R64',
         'dict method `keys()`',
         Level.L2,
         Tool.SEMGREP,
@@ -690,7 +645,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('keys'),
     ),
     Restriction(
-        'R70',
+        'R65',
         'dict method `values()`',
         Level.L2,
         Tool.SEMGREP,
@@ -698,7 +653,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('values'),
     ),
     Restriction(
-        'R71',
+        'R66',
         'Context manager `with`',
         Level.L2,
         Tool.SEMGREP,
@@ -706,7 +661,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_either('with $X: ...', 'with $X as $Y: ...'),
     ),
     Restriction(
-        'R72',
+        'R67',
         'File opening `open()`',
         Level.L2,
         Tool.SEMGREP,
@@ -714,7 +669,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('open'),
     ),
     Restriction(
-        'R73',
+        'R68',
         'File reading `read()`/`readline()`/`readlines()`',
         Level.L2,
         Tool.SEMGREP,
@@ -722,7 +677,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('read', 'readline', 'readlines'),
     ),
     Restriction(
-        'R74',
+        'R69',
         'File writing `write()`/`writelines()`',
         Level.L2,
         Tool.SEMGREP,
@@ -730,7 +685,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('write', 'writelines'),
     ),
     Restriction(
-        'R75',
+        'R70',
         'File closing `close()`',
         Level.L2,
         Tool.SEMGREP,
@@ -738,7 +693,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('close'),
     ),
     Restriction(
-        'R76',
+        'R71',
         '`csv` module',
         Level.L2,
         Tool.SEMGREP,
@@ -746,7 +701,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('csv'),
     ),
     Restriction(
-        'R77',
+        'R72',
         'Tuple constructor `tuple()`',
         Level.L3,
         Tool.SEMGREP,
@@ -754,18 +709,18 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('tuple'),
     ),
     Restriction(
-        'R78',
+        'R73',
         'Tuple slicing `tup[i:j:k]`',
         Level.L3,
         Tool.HYBRID,
         'Subscript/slice-shape match + runtime observation',
-        note='R48/R54/R78 share one pattern; the base type decides · DynaPyt only sees executed paths',
+        note='R43/R49/R73 share one pattern; the base type decides · DynaPyt only sees executed paths',
         dynamic=(
-            DynamicMatch(hook='read_subscript', names=('slice',), accepts=('tuple',), candidate='R48'),
+            DynamicMatch(hook='read_subscript', names=('slice',), accepts=('tuple',), candidate='R43'),
         ),
     ),
     Restriction(
-        'R79',
+        'R74',
         'Tuple packing `t = a, b, c`',
         Level.L3,
         Tool.AST,
@@ -774,7 +729,7 @@ CATALOG: tuple[Restriction, ...] = (
         ast='tuple_packing',
     ),
     Restriction(
-        'R80',
+        'R75',
         'Sequence unpacking `a, b, c = t`',
         Level.L3,
         Tool.AST,
@@ -783,7 +738,7 @@ CATALOG: tuple[Restriction, ...] = (
         ast='sequence_unpacking',
     ),
     Restriction(
-        'R81',
+        'R76',
         'dict method `items()`',
         Level.L3,
         Tool.SEMGREP,
@@ -791,7 +746,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('items'),
     ),
     Restriction(
-        'R82',
+        'R77',
         '`datetime` module',
         Level.L3,
         Tool.SEMGREP,
@@ -799,16 +754,16 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('datetime'),
     ),
     Restriction(
-        'R83',
+        'R78',
         '`time` module',
         Level.L3,
         Tool.SEMGREP,
         'Import match',
         semgrep=_imports('time'),
     ),
-    Restriction('R84', 'NumPy', Level.L3, Tool.SEMGREP, 'Import match', semgrep=_imports('numpy')),
+    Restriction('R79', 'NumPy', Level.L3, Tool.SEMGREP, 'Import match', semgrep=_imports('numpy')),
     Restriction(
-        'R85',
+        'R80',
         'pandas',
         Level.L3,
         Tool.SEMGREP,
@@ -816,7 +771,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('pandas'),
     ),
     Restriction(
-        'R86',
+        'R81',
         'Matplotlib',
         Level.L3,
         Tool.SEMGREP,
@@ -824,7 +779,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('matplotlib', 'matplotlib.pyplot'),
     ),
     Restriction(
-        'R87',
+        'R82',
         'Chained assignment `a = b = 0`',
         Level.L4,
         Tool.AST,
@@ -833,7 +788,7 @@ CATALOG: tuple[Restriction, ...] = (
         ast='chained_assignment',
     ),
     Restriction(
-        'R88',
+        'R83',
         'Starred unpacking `a, *rest = lst`',
         Level.L4,
         Tool.AST,
@@ -842,7 +797,7 @@ CATALOG: tuple[Restriction, ...] = (
         ast='starred_unpacking',
     ),
     Restriction(
-        'R89',
+        'R84',
         'Summation `sum()`',
         Level.L4,
         Tool.SEMGREP,
@@ -850,7 +805,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('sum'),
     ),
     Restriction(
-        'R90',
+        'R85',
         'Sorted copy `sorted()`',
         Level.L4,
         Tool.SEMGREP,
@@ -858,18 +813,18 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('sorted'),
     ),
     Restriction(
-        'R91',
+        'R86',
         'str method `index()`',
         Level.L4,
         Tool.HYBRID,
         'Method-name match + runtime observation',
         note='Method name shared across builtin types · DynaPyt only sees executed paths',
         dynamic=(
-            DynamicMatch(hook='pre_call', names=('index',), accepts=('str',), candidate='R63'),
+            DynamicMatch(hook='pre_call', names=('index',), accepts=('str',), candidate='R58'),
         ),
     ),
     Restriction(
-        'R92',
+        'R87',
         'str method `rfind()`',
         Level.L4,
         Tool.SEMGREP,
@@ -877,7 +832,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('rfind'),
     ),
     Restriction(
-        'R93',
+        'R88',
         'str method `rindex()`',
         Level.L4,
         Tool.SEMGREP,
@@ -885,7 +840,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('rindex'),
     ),
     Restriction(
-        'R94',
+        'R89',
         'str method `startswith()`',
         Level.L4,
         Tool.SEMGREP,
@@ -893,7 +848,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('startswith'),
     ),
     Restriction(
-        'R95',
+        'R90',
         'str method `endswith()`',
         Level.L4,
         Tool.SEMGREP,
@@ -901,7 +856,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('endswith'),
     ),
     Restriction(
-        'R96',
+        'R91',
         'str predicates `isdigit()`, `isalpha()`, ...',
         Level.L4,
         Tool.SEMGREP,
@@ -909,7 +864,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('isdigit', 'isalpha', 'isalnum', 'isspace', 'isupper', 'islower', 'istitle', 'isnumeric', 'isdecimal', 'isidentifier', 'isprintable', 'isascii'),
     ),
     Restriction(
-        'R97',
+        'R92',
         'str method `capitalize()`',
         Level.L4,
         Tool.SEMGREP,
@@ -917,7 +872,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('capitalize'),
     ),
     Restriction(
-        'R98',
+        'R93',
         'str method `casefold()`',
         Level.L4,
         Tool.SEMGREP,
@@ -925,7 +880,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('casefold'),
     ),
     Restriction(
-        'R99',
+        'R94',
         'str method `rsplit()`',
         Level.L4,
         Tool.SEMGREP,
@@ -933,7 +888,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('rsplit'),
     ),
     Restriction(
-        'R100',
+        'R95',
         'str method `partition()`',
         Level.L4,
         Tool.SEMGREP,
@@ -941,7 +896,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('partition'),
     ),
     Restriction(
-        'R101',
+        'R96',
         'str method `rpartition()`',
         Level.L4,
         Tool.SEMGREP,
@@ -949,7 +904,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('rpartition'),
     ),
     Restriction(
-        'R102',
+        'R97',
         'str method `splitlines()`',
         Level.L4,
         Tool.SEMGREP,
@@ -957,7 +912,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('splitlines'),
     ),
     Restriction(
-        'R103',
+        'R98',
         'str method `lstrip()`',
         Level.L4,
         Tool.SEMGREP,
@@ -965,7 +920,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('lstrip'),
     ),
     Restriction(
-        'R104',
+        'R99',
         'str method `rstrip()`',
         Level.L4,
         Tool.SEMGREP,
@@ -973,7 +928,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('rstrip'),
     ),
     Restriction(
-        'R105',
+        'R100',
         'str method `removeprefix()`',
         Level.L4,
         Tool.SEMGREP,
@@ -981,7 +936,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('removeprefix'),
     ),
     Restriction(
-        'R106',
+        'R101',
         'str method `removesuffix()`',
         Level.L4,
         Tool.SEMGREP,
@@ -989,7 +944,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('removesuffix'),
     ),
     Restriction(
-        'R107',
+        'R102',
         'str methods `translate()`/`maketrans()`',
         Level.L4,
         Tool.SEMGREP,
@@ -997,7 +952,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('translate', 'maketrans'),
     ),
     Restriction(
-        'R108',
+        'R103',
         'str method `format_map()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1005,7 +960,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('format_map'),
     ),
     Restriction(
-        'R109',
+        'R104',
         'str method `zfill()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1013,7 +968,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('zfill'),
     ),
     Restriction(
-        'R110',
+        'R105',
         'str method `ljust()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1021,7 +976,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('ljust'),
     ),
     Restriction(
-        'R111',
+        'R106',
         'str method `rjust()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1029,7 +984,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('rjust'),
     ),
     Restriction(
-        'R112',
+        'R107',
         'str method `center()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1037,7 +992,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('center'),
     ),
     Restriction(
-        'R113',
+        'R108',
         'str method `expandtabs()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1045,7 +1000,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('expandtabs'),
     ),
     Restriction(
-        'R114',
+        'R109',
         'str method `encode()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1053,7 +1008,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('encode'),
     ),
     Restriction(
-        'R115',
+        'R110',
         'List comprehension',
         Level.L4,
         Tool.SEMGREP,
@@ -1061,29 +1016,29 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('[$X for $Y in $Z]'),
     ),
     Restriction(
-        'R116',
+        'R111',
         'dict method `pop()`',
         Level.L4,
         Tool.HYBRID,
         'Method-name match + runtime observation',
         note='Method name shared across builtin types · DynaPyt only sees executed paths',
         dynamic=(
-            DynamicMatch(hook='pre_call', names=('pop',), accepts=('dict',), candidate='R61'),
+            DynamicMatch(hook='pre_call', names=('pop',), accepts=('dict',), candidate='R56'),
         ),
     ),
     Restriction(
-        'R117',
+        'R112',
         'dict method `clear()`',
         Level.L4,
         Tool.HYBRID,
         'Method-name match + runtime observation',
         note='Method name shared across builtin types · DynaPyt only sees executed paths',
         dynamic=(
-            DynamicMatch(hook='pre_call', names=('clear',), accepts=('dict',), candidate='R62'),
+            DynamicMatch(hook='pre_call', names=('clear',), accepts=('dict',), candidate='R57'),
         ),
     ),
     Restriction(
-        'R118',
+        'R113',
         'dict method `update()`',
         Level.L4,
         Tool.HYBRID,
@@ -1091,11 +1046,11 @@ CATALOG: tuple[Restriction, ...] = (
         note='Method name shared across builtin types · DynaPyt only sees executed paths',
         candidate=_sg('$X.update(...)'),
         dynamic=(
-            DynamicMatch(hook='pre_call', names=('update',), accepts=('dict',), candidate='R118'),
+            DynamicMatch(hook='pre_call', names=('update',), accepts=('dict',), candidate='R113'),
         ),
     ),
     Restriction(
-        'R119',
+        'R114',
         'dict method `setdefault()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1103,7 +1058,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('setdefault'),
     ),
     Restriction(
-        'R120',
+        'R115',
         'dict method `fromkeys()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1111,7 +1066,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('fromkeys'),
     ),
     Restriction(
-        'R121',
+        'R116',
         'dict method `popitem()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1119,7 +1074,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('popitem'),
     ),
     Restriction(
-        'R122',
+        'R117',
         'Dictionary comprehension',
         Level.L4,
         Tool.SEMGREP,
@@ -1127,7 +1082,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('{$K: $V for $X in $Y}'),
     ),
     Restriction(
-        'R123',
+        'R118',
         'Set display `{value, ...}`',
         Level.L4,
         Tool.AST,
@@ -1136,7 +1091,7 @@ CATALOG: tuple[Restriction, ...] = (
         ast='set_display',
     ),
     Restriction(
-        'R124',
+        'R119',
         'Set constructor `set()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1144,7 +1099,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('set'),
     ),
     Restriction(
-        'R125',
+        'R120',
         'Set comprehension',
         Level.L4,
         Tool.SEMGREP,
@@ -1152,7 +1107,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('{$X for $Y in $Z}'),
     ),
     Restriction(
-        'R126',
+        'R121',
         'Immutable set `frozenset()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1160,7 +1115,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('frozenset'),
     ),
     Restriction(
-        'R127',
+        'R122',
         'set method `add()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1168,18 +1123,18 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('add'),
     ),
     Restriction(
-        'R128',
+        'R123',
         'set method `remove()`',
         Level.L4,
         Tool.HYBRID,
         'Method-name match + runtime observation',
         note='Method name shared across builtin types · DynaPyt only sees executed paths',
         dynamic=(
-            DynamicMatch(hook='pre_call', names=('remove',), accepts=('set',), candidate='R60'),
+            DynamicMatch(hook='pre_call', names=('remove',), accepts=('set',), candidate='R55'),
         ),
     ),
     Restriction(
-        'R129',
+        'R124',
         'set method `discard()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1187,64 +1142,64 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('discard'),
     ),
     Restriction(
-        'R130',
+        'R125',
         'set method `pop()`',
         Level.L4,
         Tool.HYBRID,
         'Method-name match + runtime observation',
         note='Method name shared across builtin types · DynaPyt only sees executed paths',
         dynamic=(
-            DynamicMatch(hook='pre_call', names=('pop',), accepts=('set',), candidate='R61'),
+            DynamicMatch(hook='pre_call', names=('pop',), accepts=('set',), candidate='R56'),
         ),
     ),
     Restriction(
-        'R131',
+        'R126',
         'set method `clear()`',
         Level.L4,
         Tool.HYBRID,
         'Method-name match + runtime observation',
         note='Method name shared across builtin types · DynaPyt only sees executed paths',
         dynamic=(
-            DynamicMatch(hook='pre_call', names=('clear',), accepts=('set',), candidate='R62'),
+            DynamicMatch(hook='pre_call', names=('clear',), accepts=('set',), candidate='R57'),
         ),
     ),
     Restriction(
-        'R132',
+        'R127',
         'set method `copy()`',
         Level.L4,
         Tool.HYBRID,
         'Method-name match + runtime observation',
         note='Method name shared across builtin types · DynaPyt only sees executed paths',
         dynamic=(
-            DynamicMatch(hook='pre_call', names=('copy',), accepts=('set',), candidate='R67'),
+            DynamicMatch(hook='pre_call', names=('copy',), accepts=('set',), candidate='R62'),
         ),
     ),
     Restriction(
-        'R133',
+        'R128',
         'set `union()` and `|`',
         Level.L4,
         Tool.HYBRID,
         'Method-name match + runtime observation',
-        note='Method is unambiguous; the operator collides with bitwise OR (R181) · DynaPyt only sees executed paths',
+        note='Method is unambiguous; the operator collides with bitwise OR (R176) · DynaPyt only sees executed paths',
         semgrep=_methods('union'),
         dynamic=(
-            DynamicMatch(hook='binary_operation', names=('BitOr',), accepts=('set',), candidate='R181'),
+            DynamicMatch(hook='binary_operation', names=('BitOr',), accepts=('set',), candidate='R176'),
         ),
     ),
     Restriction(
-        'R134',
+        'R129',
         'set `intersection()` and `&`',
         Level.L4,
         Tool.HYBRID,
         'Method-name match + runtime observation',
-        note='Method is unambiguous; the operator collides with bitwise AND (R180) · DynaPyt only sees executed paths',
+        note='Method is unambiguous; the operator collides with bitwise AND (R175) · DynaPyt only sees executed paths',
         semgrep=_methods('intersection'),
         dynamic=(
-            DynamicMatch(hook='binary_operation', names=('BitAnd',), accepts=('set',), candidate='R180'),
+            DynamicMatch(hook='binary_operation', names=('BitAnd',), accepts=('set',), candidate='R175'),
         ),
     ),
     Restriction(
-        'R135',
+        'R130',
         'set `difference()` and `-`',
         Level.L4,
         Tool.HYBRID,
@@ -1253,47 +1208,47 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('difference'),
         candidate=_sg('$X - $Y'),
         dynamic=(
-            DynamicMatch(hook='binary_operation', names=('Subtract',), accepts=('set',), candidate='R135'),
+            DynamicMatch(hook='binary_operation', names=('Subtract',), accepts=('set',), candidate='R130'),
         ),
     ),
     Restriction(
-        'R136',
+        'R131',
         'set `symmetric_difference()` and `^`',
         Level.L4,
         Tool.HYBRID,
         'Method-name match + runtime observation',
-        note='Method is unambiguous; the operator collides with bitwise XOR (R182) · DynaPyt only sees executed paths',
+        note='Method is unambiguous; the operator collides with bitwise XOR (R177) · DynaPyt only sees executed paths',
         semgrep=_methods('symmetric_difference'),
         dynamic=(
-            DynamicMatch(hook='binary_operation', names=('BitXor',), accepts=('set',), candidate='R182'),
+            DynamicMatch(hook='binary_operation', names=('BitXor',), accepts=('set',), candidate='R177'),
         ),
     ),
     Restriction(
-        'R137',
+        'R132',
         'set `update()` and `|=`',
         Level.L4,
         Tool.HYBRID,
         'Method-name match + runtime observation',
-        note='Method is unambiguous; the operator collides with bitwise OR assignment (R187) · DynaPyt only sees executed paths',
+        note='Method is unambiguous; the operator collides with bitwise OR assignment (R182) · DynaPyt only sees executed paths',
         dynamic=(
-            DynamicMatch(hook='augmented_assignment', names=('BitOrAssign',), accepts=('set',), candidate='R187'),
-            DynamicMatch(hook='pre_call', names=('update',), accepts=('set',), candidate='R118'),
+            DynamicMatch(hook='augmented_assignment', names=('BitOrAssign',), accepts=('set',), candidate='R182'),
+            DynamicMatch(hook='pre_call', names=('update',), accepts=('set',), candidate='R113'),
         ),
     ),
     Restriction(
-        'R138',
+        'R133',
         'set `intersection_update()` and `&=`',
         Level.L4,
         Tool.HYBRID,
         'Method-name match + runtime observation',
-        note='Method is unambiguous; the operator collides with bitwise AND assignment (R186) · DynaPyt only sees executed paths',
+        note='Method is unambiguous; the operator collides with bitwise AND assignment (R181) · DynaPyt only sees executed paths',
         semgrep=_methods('intersection_update'),
         dynamic=(
-            DynamicMatch(hook='augmented_assignment', names=('BitAndAssign',), accepts=('set',), candidate='R186'),
+            DynamicMatch(hook='augmented_assignment', names=('BitAndAssign',), accepts=('set',), candidate='R181'),
         ),
     ),
     Restriction(
-        'R139',
+        'R134',
         'set `difference_update()` and `-=`',
         Level.L4,
         Tool.HYBRID,
@@ -1302,23 +1257,23 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('difference_update'),
         candidate=_sg('$X -= $Y'),
         dynamic=(
-            DynamicMatch(hook='augmented_assignment', names=('SubtractAssign',), accepts=('set',), candidate='R139'),
+            DynamicMatch(hook='augmented_assignment', names=('SubtractAssign',), accepts=('set',), candidate='R134'),
         ),
     ),
     Restriction(
-        'R140',
+        'R135',
         'set `symmetric_difference_update()` and `^=`',
         Level.L4,
         Tool.HYBRID,
         'Method-name match + runtime observation',
-        note='Method is unambiguous; the operator collides with bitwise XOR assignment (R188) · DynaPyt only sees executed paths',
+        note='Method is unambiguous; the operator collides with bitwise XOR assignment (R183) · DynaPyt only sees executed paths',
         semgrep=_methods('symmetric_difference_update'),
         dynamic=(
-            DynamicMatch(hook='augmented_assignment', names=('BitXorAssign',), accepts=('set',), candidate='R188'),
+            DynamicMatch(hook='augmented_assignment', names=('BitXorAssign',), accepts=('set',), candidate='R183'),
         ),
     ),
     Restriction(
-        'R141',
+        'R136',
         'set `issubset()` and `<=`, `<`',
         Level.L4,
         Tool.HYBRID,
@@ -1331,7 +1286,7 @@ CATALOG: tuple[Restriction, ...] = (
         ),
     ),
     Restriction(
-        'R142',
+        'R137',
         'set `issuperset()` and `>=`, `>`',
         Level.L4,
         Tool.HYBRID,
@@ -1344,7 +1299,7 @@ CATALOG: tuple[Restriction, ...] = (
         ),
     ),
     Restriction(
-        'R143',
+        'R138',
         'set `isdisjoint()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1352,7 +1307,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_methods('isdisjoint'),
     ),
     Restriction(
-        'R144',
+        'R139',
         'Structural pattern matching `match`/`case`',
         Level.L4,
         Tool.AST,
@@ -1361,7 +1316,7 @@ CATALOG: tuple[Restriction, ...] = (
         ast='match_case',
     ),
     Restriction(
-        'R145',
+        'R140',
         'Loop termination `break`',
         Level.L4,
         Tool.SEMGREP,
@@ -1369,7 +1324,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('break'),
     ),
     Restriction(
-        'R146',
+        'R141',
         'Next iteration `continue`',
         Level.L4,
         Tool.SEMGREP,
@@ -1377,7 +1332,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('continue'),
     ),
     Restriction(
-        'R147',
+        'R142',
         'Exception block `try`',
         Level.L4,
         Tool.SEMGREP,
@@ -1385,7 +1340,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_either('try:\n    ...\nexcept $E:\n    ...', 'try:\n    ...\nexcept $E as $N:\n    ...', 'try:\n    ...\nexcept:\n    ...', 'try:\n    ...\nfinally:\n    ...'),
     ),
     Restriction(
-        'R148',
+        'R143',
         'Exception clause `except`',
         Level.L4,
         Tool.SEMGREP,
@@ -1393,7 +1348,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_either('try:\n    ...\nexcept $E:\n    ...', 'try:\n    ...\nexcept $E as $N:\n    ...', 'try:\n    ...\nexcept:\n    ...'),
     ),
     Restriction(
-        'R149',
+        'R144',
         'Cleanup clause `finally`',
         Level.L4,
         Tool.AST,
@@ -1402,7 +1357,7 @@ CATALOG: tuple[Restriction, ...] = (
         ast='finally_clause',
     ),
     Restriction(
-        'R150',
+        'R145',
         'Exception `raise`',
         Level.L4,
         Tool.SEMGREP,
@@ -1410,7 +1365,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('raise $X'),
     ),
     Restriction(
-        'R151',
+        'R146',
         'Condition verification `assert`',
         Level.L4,
         Tool.SEMGREP,
@@ -1418,7 +1373,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('assert $X'),
     ),
     Restriction(
-        'R152',
+        'R147',
         'Program termination `exit()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1426,7 +1381,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('exit'),
     ),
     Restriction(
-        'R153',
+        'R148',
         'Variadic parameters `*args`/`**kwargs`',
         Level.L4,
         Tool.AST,
@@ -1435,7 +1390,7 @@ CATALOG: tuple[Restriction, ...] = (
         ast='variadic_parameters',
     ),
     Restriction(
-        'R154',
+        'R149',
         'Nested functions and closures',
         Level.L4,
         Tool.AST,
@@ -1444,7 +1399,7 @@ CATALOG: tuple[Restriction, ...] = (
         ast='nested_functions',
     ),
     Restriction(
-        'R155',
+        'R150',
         'Anonymous function `lambda`',
         Level.L4,
         Tool.AST,
@@ -1453,7 +1408,7 @@ CATALOG: tuple[Restriction, ...] = (
         ast='lambda',
     ),
     Restriction(
-        'R156',
+        'R151',
         'Assignment expression `:=`',
         Level.L4,
         Tool.SEMGREP,
@@ -1461,7 +1416,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_regex(':='),
     ),
     Restriction(
-        'R157',
+        'R152',
         'Yield `yield`',
         Level.L4,
         Tool.SEMGREP,
@@ -1469,7 +1424,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('yield $X'),
     ),
     Restriction(
-        'R158',
+        'R153',
         'Generator expression',
         Level.L4,
         Tool.SEMGREP,
@@ -1477,7 +1432,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('($X for $Y in $Z)'),
     ),
     Restriction(
-        'R159',
+        'R154',
         'Global scope `global`',
         Level.L4,
         Tool.SEMGREP,
@@ -1485,7 +1440,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('global $X'),
     ),
     Restriction(
-        'R160',
+        'R155',
         'Enclosing scope `nonlocal`',
         Level.L4,
         Tool.SEMGREP,
@@ -1493,7 +1448,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('nonlocal $X'),
     ),
     Restriction(
-        'R161',
+        'R156',
         'Main-module guard `if __name__ == "__main__"`',
         Level.L4,
         Tool.AST,
@@ -1502,7 +1457,7 @@ CATALOG: tuple[Restriction, ...] = (
         ast='main_module_guard',
     ),
     Restriction(
-        'R162',
+        'R157',
         'Functional mapping `map()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1510,7 +1465,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('map'),
     ),
     Restriction(
-        'R163',
+        'R158',
         'Functional filtering `filter()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1518,7 +1473,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('filter'),
     ),
     Restriction(
-        'R164',
+        'R159',
         'Cumulative reduction `reduce()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1526,7 +1481,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('reduce'),
     ),
     Restriction(
-        'R165',
+        'R160',
         'Existential quantifier `any()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1534,7 +1489,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('any'),
     ),
     Restriction(
-        'R166',
+        'R161',
         'Universal quantifier `all()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1542,7 +1497,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('all'),
     ),
     Restriction(
-        'R167',
+        'R162',
         'Iterator creation `iter()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1550,7 +1505,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('iter'),
     ),
     Restriction(
-        'R168',
+        'R163',
         'Iterator advancement `next()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1558,7 +1513,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('next'),
     ),
     Restriction(
-        'R169',
+        'R164',
         'Index-value pairing `enumerate()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1566,7 +1521,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('enumerate'),
     ),
     Restriction(
-        'R170',
+        'R165',
         'Parallel iteration `zip()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1574,7 +1529,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('zip'),
     ),
     Restriction(
-        'R171',
+        'R166',
         'Class definition `class`',
         Level.L4,
         Tool.SEMGREP,
@@ -1582,7 +1537,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_either('class $C: ...', 'class $C($B): ...'),
     ),
     Restriction(
-        'R172',
+        'R167',
         'Initializer `__init__()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1590,7 +1545,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('def __init__(...): ...'),
     ),
     Restriction(
-        'R173',
+        'R168',
         'Inheritance and `super()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1598,7 +1553,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('super'),
     ),
     Restriction(
-        'R174',
+        'R169',
         'Dunder methods `__str__`, `__repr__`, ...',
         Level.L4,
         Tool.SEMGREP,
@@ -1606,7 +1561,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_and({'pattern': 'def $F(...): ...'}, {'metavariable-regex': {'metavariable': '$F', 'regex': '^__[A-Za-z0-9_]+__$'}}),
     ),
     Restriction(
-        'R175',
+        'R170',
         'Decorator `@`',
         Level.L4,
         Tool.AST,
@@ -1615,7 +1570,7 @@ CATALOG: tuple[Restriction, ...] = (
         ast='decorator',
     ),
     Restriction(
-        'R176',
+        'R171',
         '`@staticmethod` / `@classmethod`',
         Level.L4,
         Tool.AST,
@@ -1624,7 +1579,7 @@ CATALOG: tuple[Restriction, ...] = (
         ast='staticmethod_classmethod',
     ),
     Restriction(
-        'R177',
+        'R172',
         'Recursive copy `deepcopy()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1632,7 +1587,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('deepcopy'),
     ),
     Restriction(
-        'R178',
+        'R173',
         'Complex numbers `complex`',
         Level.L4,
         Tool.SEMGREP,
@@ -1640,7 +1595,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('complex'),
     ),
     Restriction(
-        'R179',
+        'R174',
         'Binary types `bytes`/`bytearray`/`memoryview`',
         Level.L4,
         Tool.SEMGREP,
@@ -1648,7 +1603,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('bytes', 'bytearray', 'memoryview'),
     ),
     Restriction(
-        'R180',
+        'R175',
         'Bitwise AND `&`',
         Level.L4,
         Tool.HYBRID,
@@ -1656,11 +1611,11 @@ CATALOG: tuple[Restriction, ...] = (
         note='Operator collides with set operations · DynaPyt only sees executed paths',
         candidate=_sg('$X & $Y'),
         dynamic=(
-            DynamicMatch(hook='binary_operation', names=('BitAnd',), accepts=('int',), candidate='R180'),
+            DynamicMatch(hook='binary_operation', names=('BitAnd',), accepts=('int',), candidate='R175'),
         ),
     ),
     Restriction(
-        'R181',
+        'R176',
         'Bitwise OR `|`',
         Level.L4,
         Tool.HYBRID,
@@ -1668,11 +1623,11 @@ CATALOG: tuple[Restriction, ...] = (
         note='Operator collides with set operations · DynaPyt only sees executed paths',
         candidate=_sg('$X | $Y'),
         dynamic=(
-            DynamicMatch(hook='binary_operation', names=('BitOr',), accepts=('int',), candidate='R181'),
+            DynamicMatch(hook='binary_operation', names=('BitOr',), accepts=('int',), candidate='R176'),
         ),
     ),
     Restriction(
-        'R182',
+        'R177',
         'Bitwise XOR `^`',
         Level.L4,
         Tool.HYBRID,
@@ -1680,11 +1635,11 @@ CATALOG: tuple[Restriction, ...] = (
         note='Operator collides with set operations · DynaPyt only sees executed paths',
         candidate=_sg('$X ^ $Y'),
         dynamic=(
-            DynamicMatch(hook='binary_operation', names=('BitXor',), accepts=('int',), candidate='R182'),
+            DynamicMatch(hook='binary_operation', names=('BitXor',), accepts=('int',), candidate='R177'),
         ),
     ),
     Restriction(
-        'R183',
+        'R178',
         'Bitwise inversion `~`',
         Level.L4,
         Tool.SEMGREP,
@@ -1692,7 +1647,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('~$X'),
     ),
     Restriction(
-        'R184',
+        'R179',
         'Left shift `<<`',
         Level.L4,
         Tool.SEMGREP,
@@ -1700,7 +1655,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('$X << $Y'),
     ),
     Restriction(
-        'R185',
+        'R180',
         'Right shift `>>`',
         Level.L4,
         Tool.SEMGREP,
@@ -1708,7 +1663,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('$X >> $Y'),
     ),
     Restriction(
-        'R186',
+        'R181',
         'Bitwise AND assignment `&=`',
         Level.L4,
         Tool.HYBRID,
@@ -1716,11 +1671,11 @@ CATALOG: tuple[Restriction, ...] = (
         note='Operator collides with set operations · DynaPyt only sees executed paths',
         candidate=_sg('$X &= $Y'),
         dynamic=(
-            DynamicMatch(hook='augmented_assignment', names=('BitAndAssign',), accepts=('int',), candidate='R186'),
+            DynamicMatch(hook='augmented_assignment', names=('BitAndAssign',), accepts=('int',), candidate='R181'),
         ),
     ),
     Restriction(
-        'R187',
+        'R182',
         'Bitwise OR assignment `|=`',
         Level.L4,
         Tool.HYBRID,
@@ -1728,11 +1683,11 @@ CATALOG: tuple[Restriction, ...] = (
         note='Operator collides with set operations · DynaPyt only sees executed paths',
         candidate=_sg('$X |= $Y'),
         dynamic=(
-            DynamicMatch(hook='augmented_assignment', names=('BitOrAssign',), accepts=('int',), candidate='R187'),
+            DynamicMatch(hook='augmented_assignment', names=('BitOrAssign',), accepts=('int',), candidate='R182'),
         ),
     ),
     Restriction(
-        'R188',
+        'R183',
         'Bitwise XOR assignment `^=`',
         Level.L4,
         Tool.HYBRID,
@@ -1740,11 +1695,11 @@ CATALOG: tuple[Restriction, ...] = (
         note='Operator collides with set operations · DynaPyt only sees executed paths',
         candidate=_sg('$X ^= $Y'),
         dynamic=(
-            DynamicMatch(hook='augmented_assignment', names=('BitXorAssign',), accepts=('int',), candidate='R188'),
+            DynamicMatch(hook='augmented_assignment', names=('BitXorAssign',), accepts=('int',), candidate='R183'),
         ),
     ),
     Restriction(
-        'R189',
+        'R184',
         'Left-shift assignment `<<=`',
         Level.L4,
         Tool.SEMGREP,
@@ -1752,7 +1707,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('$X <<= $Y'),
     ),
     Restriction(
-        'R190',
+        'R185',
         'Right-shift assignment `>>=`',
         Level.L4,
         Tool.SEMGREP,
@@ -1760,7 +1715,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('$X >>= $Y'),
     ),
     Restriction(
-        'R191',
+        'R186',
         'Object identity `id()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1768,7 +1723,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('id'),
     ),
     Restriction(
-        'R192',
+        'R187',
         'Namespace inspection `globals()`/`locals()`/`vars()`/`dir()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1776,7 +1731,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('globals', 'locals', 'vars', 'dir'),
     ),
     Restriction(
-        'R193',
+        'R188',
         'Attribute reflection `getattr()`/`setattr()`/`hasattr()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1784,7 +1739,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('getattr', 'setattr', 'hasattr'),
     ),
     Restriction(
-        'R194',
+        'R189',
         'Dunder attribute access `__dict__`/`__class__`',
         Level.L4,
         Tool.SEMGREP,
@@ -1792,7 +1747,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_either('$X.__dict__', '$X.__class__'),
     ),
     Restriction(
-        'R195',
+        'R190',
         'Dynamic evaluation `eval()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1800,7 +1755,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('eval'),
     ),
     Restriction(
-        'R196',
+        'R191',
         'Dynamic execution `exec()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1808,7 +1763,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('exec'),
     ),
     Restriction(
-        'R197',
+        'R192',
         'Code compilation `compile()`',
         Level.L4,
         Tool.SEMGREP,
@@ -1816,7 +1771,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_funcs('compile'),
     ),
     Restriction(
-        'R198',
+        'R193',
         '`re` module',
         Level.L4,
         Tool.SEMGREP,
@@ -1824,7 +1779,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('re'),
     ),
     Restriction(
-        'R199',
+        'R194',
         '`collections` module',
         Level.L4,
         Tool.SEMGREP,
@@ -1832,7 +1787,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('collections'),
     ),
     Restriction(
-        'R200',
+        'R195',
         '`itertools` module',
         Level.L4,
         Tool.SEMGREP,
@@ -1840,7 +1795,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('itertools'),
     ),
     Restriction(
-        'R201',
+        'R196',
         '`functools` module',
         Level.L4,
         Tool.SEMGREP,
@@ -1848,7 +1803,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('functools'),
     ),
     Restriction(
-        'R202',
+        'R197',
         '`operator` module',
         Level.L4,
         Tool.SEMGREP,
@@ -1856,7 +1811,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('operator'),
     ),
     Restriction(
-        'R203',
+        'R198',
         '`decimal` and `fractions` modules',
         Level.L4,
         Tool.SEMGREP,
@@ -1864,7 +1819,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('decimal', 'fractions'),
     ),
     Restriction(
-        'R204',
+        'R199',
         '`enum` module',
         Level.L4,
         Tool.SEMGREP,
@@ -1872,7 +1827,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('enum'),
     ),
     Restriction(
-        'R205',
+        'R200',
         '`dataclasses` module',
         Level.L4,
         Tool.SEMGREP,
@@ -1880,7 +1835,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('dataclasses'),
     ),
     Restriction(
-        'R206',
+        'R201',
         '`abc` module',
         Level.L4,
         Tool.SEMGREP,
@@ -1888,7 +1843,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('abc'),
     ),
     Restriction(
-        'R207',
+        'R202',
         '`typing` module',
         Level.L4,
         Tool.SEMGREP,
@@ -1896,7 +1851,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('typing'),
     ),
     Restriction(
-        'R208',
+        'R203',
         '`logging` module',
         Level.L4,
         Tool.SEMGREP,
@@ -1904,7 +1859,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('logging'),
     ),
     Restriction(
-        'R209',
+        'R204',
         '`unittest` and `pytest`',
         Level.L4,
         Tool.SEMGREP,
@@ -1912,7 +1867,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('unittest', 'pytest'),
     ),
     Restriction(
-        'R210',
+        'R205',
         '`argparse` module',
         Level.L4,
         Tool.SEMGREP,
@@ -1920,7 +1875,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('argparse'),
     ),
     Restriction(
-        'R211',
+        'R206',
         '`pathlib` module',
         Level.L4,
         Tool.SEMGREP,
@@ -1928,7 +1883,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('pathlib'),
     ),
     Restriction(
-        'R212',
+        'R207',
         '`pickle` module',
         Level.L4,
         Tool.SEMGREP,
@@ -1936,7 +1891,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('pickle'),
     ),
     Restriction(
-        'R213',
+        'R208',
         '`os` module',
         Level.L4,
         Tool.SEMGREP,
@@ -1944,7 +1899,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('os'),
     ),
     Restriction(
-        'R214',
+        'R209',
         '`sys` module',
         Level.L4,
         Tool.SEMGREP,
@@ -1952,7 +1907,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('sys'),
     ),
     Restriction(
-        'R215',
+        'R210',
         '`sys.argv`',
         Level.L4,
         Tool.SEMGREP,
@@ -1960,7 +1915,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_sg('sys.argv'),
     ),
     Restriction(
-        'R216',
+        'R211',
         '`subprocess` module',
         Level.L4,
         Tool.SEMGREP,
@@ -1968,7 +1923,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('subprocess'),
     ),
     Restriction(
-        'R217',
+        'R212',
         'Network access (`requests`/`urllib`/sockets)',
         Level.L4,
         Tool.SEMGREP,
@@ -1976,7 +1931,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('requests', 'urllib', 'socket'),
     ),
     Restriction(
-        'R218',
+        'R213',
         '`threading` and `multiprocessing`',
         Level.L4,
         Tool.SEMGREP,
@@ -1984,7 +1939,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_imports('threading', 'multiprocessing'),
     ),
     Restriction(
-        'R219',
+        'R214',
         'Coroutines `async`/`await` and `asyncio`',
         Level.L4,
         Tool.SEMGREP,
@@ -1992,7 +1947,7 @@ CATALOG: tuple[Restriction, ...] = (
         semgrep=_either('import asyncio', 'from asyncio import $X', 'async def $F(...): ...', 'await $X'),
     ),
     Restriction(
-        'R220',
+        'R215',
         'Tuple display `(a, b)`',
         Level.L3,
         Tool.AST,
@@ -2013,7 +1968,7 @@ AST_SPECS: dict[str, AstSpec] = {
 
 
 def restrictions() -> tuple[Restriction, ...]:
-    """All 220 restrictions, in catalog order."""
+    """All 215 restrictions, in catalog order."""
     return CATALOG
 
 

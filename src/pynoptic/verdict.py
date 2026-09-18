@@ -13,27 +13,27 @@ __all__ = ["SUPPRESSION", "UNCONFIRMED_OPERATORS", "candidate_groups", "to_verdi
 #: when the specific one is present.
 SUPPRESSION: tuple[tuple[str, str], ...] = (
     ("R24", "R25"),
-    ("R24", "R48"),
-    ("R24", "R54"),
-    ("R24", "R78"),
-    ("R53", "R115"),
-    ("R41", "R122"),
-    ("R123", "R125"),
-    ("R175", "R176"),
-    ("R220", "R79"),
+    ("R24", "R43"),
+    ("R24", "R49"),
+    ("R24", "R73"),
+    ("R48", "R110"),
+    ("R36", "R117"),
+    ("R118", "R120"),
+    ("R170", "R171"),
+    ("R215", "R74"),
+    ("R176", "R128"),
+    ("R175", "R129"),
+    ("R177", "R131"),
+    ("R182", "R132"),
     ("R181", "R133"),
-    ("R180", "R134"),
-    ("R182", "R136"),
-    ("R187", "R137"),
-    ("R186", "R138"),
-    ("R188", "R140"),
-    ("R7", "R141"),
-    ("R6", "R141"),
-    ("R9", "R142"),
-    ("R8", "R142"),
-    ("R67", "R23"),
-    ("R68", "R23"),
-    ("R132", "R23"),
+    ("R183", "R135"),
+    ("R7", "R136"),
+    ("R6", "R136"),
+    ("R9", "R137"),
+    ("R8", "R137"),
+    ("R62", "R23"),
+    ("R63", "R23"),
+    ("R127", "R23"),
 )
 
 
@@ -42,16 +42,16 @@ SUPPRESSION: tuple[tuple[str, str], ...] = (
 #: ``a -= b`` is overwhelmingly numeric, so an *unresolved* static candidate
 #: must not count as a violation the way other unanimous scope votes do:
 #: only a DynaPyt-confirmed (``exact``) observation counts. Cf. the catalog
-#: notes "Collides with numeric arithmetic" (R55/R56) and the set-operator
-#: notes (R135/R139).
-UNCONFIRMED_OPERATORS: frozenset[str] = frozenset({"R55", "R56", "R135", "R139"})
+#: notes "Collides with numeric arithmetic" (R50/R51) and the set-operator
+#: notes (R130/R134).
+UNCONFIRMED_OPERATORS: frozenset[str] = frozenset({"R50", "R51", "R130", "R134"})
 
 
 def _number(restriction_id: str) -> int:
     """Return the numeric part of a restriction id, for ordering.
 
     Parameters:
-        - restriction_id: A restriction id such as R37.
+        - restriction_id: A restriction id such as R32.
 
     Returns:
         - The integer 37.

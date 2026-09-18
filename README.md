@@ -7,7 +7,7 @@ is a profiler that combines static and dynamic analysis to detect
 An NCC is a Python construct a student is not expected to use for a given
 exercise: either it lies outside the CS1 subset entirely (*course-wide*), or it
 becomes curricular only at a later level (*level-relative*). Pynoptic uses a
-catalog of 220 restrictions and three detection engines to find them.
+catalog of 215 restrictions and three detection engines to find them.
 
 ## Why
 
@@ -36,7 +36,7 @@ report = scan_source(
 )
 for finding in report.findings:
     print(finding.restriction.id, finding.kind, finding.location.line)
-# R115 course-wide 2
+# R110 course-wide 2
 ```
 
 ```python
@@ -81,7 +81,7 @@ truth. Each `Restriction` declares the detector that finds it:
 
 | Field | Count | Tool | What it catches |
 | --- | --- | --- | --- |
-| `Restriction.semgrep` | 160 | Semgrep | literals, names, operators, imports, node types |
+| `Restriction.semgrep` | 155 | Semgrep | literals, names, operators, imports, node types |
 | `Restriction.ast` | 18 | `ast` | shapes Semgrep cannot express (chained assignment, variadic parameters, the main-module guard, ...) |
 | `Restriction.candidate` | 23 | Semgrep | statically ambiguous names/operators (the candidates) |
 | `Restriction.dynamic` | 42 | DynaPyt | run-time triggers that classify a candidate by type |
@@ -107,7 +107,7 @@ candidate that denotes several restrictions is counted once. When DynaPyt
 resolved it, the exact id wins; otherwise the candidate group is voted on by
 scope at the exercise level, and a mixed vote is reported under `ambiguous` and
 not counted. Arithmetic operators are the exception to unanimous votes:
-`R55`/`R56` (`*`, `+`) and `R135`/`R139` (`-`, `-=`) collide with unrestricted
+`R50`/`R51` (`*`, `+`) and `R130`/`R134` (`-`, `-=`) collide with unrestricted
 numeric arithmetic, so an unresolved static candidate stays `ambiguous` until
 runtime confirms a `list`/`set` operand — plain `2 * 3` never counts.
 `Report.verdict` exposes `violations`, `ambiguous`,
