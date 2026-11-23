@@ -1,0 +1,23 @@
+{
+  "veredicto": "SI",
+  "n": 4,
+  "evidencia": [
+    {
+      "linea": 1,
+      "elemento": "vocales"
+    },
+    {
+      "linea": 9,
+      "elemento": "Inicializamos el contador en cero"
+    },
+    {
+      "linea": 11,
+      "elemento": "Recorremos todos los caracteres del texto"
+    },
+    {
+      "linea": 14,
+      "elemento": "Verificamos si es vocal y sumamos uno"
+    }
+  ],
+  "razon": "El docstring documenta un parametro vocales que la firma no declara."
+}

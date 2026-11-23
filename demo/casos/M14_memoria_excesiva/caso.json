@@ -1,0 +1,6 @@
+{
+  "espera": "M14",
+  "nivel": 3,
+  "funcion": "acumular_prefijos",
+  "descripcion": "memoria excesiva"
+}

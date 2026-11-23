@@ -1,0 +1,10 @@
+{
+  "veredicto": "SI",
+  "evidencia": [
+    {
+      "linea": 8,
+      "elemento": "if edad >= 18:"
+    }
+  ],
+  "razon": "Las dos ramas del if ejecutan exactamente las mismas instrucciones."
+}

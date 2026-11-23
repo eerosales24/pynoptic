@@ -1,0 +1,10 @@
+{
+  "veredicto": "SI",
+  "evidencia": [
+    {
+      "linea": 9,
+      "elemento": "precio = inventario[producto]"
+    }
+  ],
+  "razon": "Se lee la clave del diccionario sin comprobar antes que exista."
+}

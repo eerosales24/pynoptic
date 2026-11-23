@@ -1,0 +1,18 @@
+{
+  "veredicto": "SI",
+  "evidencia": [
+    {
+      "linea": 9,
+      "elemento": "a"
+    },
+    {
+      "linea": 10,
+      "elemento": "b"
+    },
+    {
+      "linea": 11,
+      "elemento": "c1"
+    }
+  ],
+  "razon": "Los nombres a, b y c1 no dicen que contienen."
+}

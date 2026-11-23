@@ -1,0 +1,11 @@
+{
+  "veredicto": "SI",
+  "n": 1,
+  "evidencia": [
+    {
+      "linea": 13,
+      "elemento": "acumulado = acumulado + round(nota1 * 1.0, 4)"
+    }
+  ],
+  "razon": "La misma instruccion de acumulacion aparece repetida entre sentencias hermanas."
+}

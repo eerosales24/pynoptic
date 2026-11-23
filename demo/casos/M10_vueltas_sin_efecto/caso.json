@@ -1,0 +1,6 @@
+{
+  "espera": "M10",
+  "nivel": 3,
+  "funcion": "contiene_negativo",
+  "descripcion": "vueltas sin efecto"
+}

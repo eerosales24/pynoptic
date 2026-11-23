@@ -1,0 +1,2087 @@
+rules:
+- id: R1
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R1
+    restriction: Boolean value `True`
+    scope: 1
+  message: 'Detected: Boolean value `True`'
+  pattern: 'True'
+- id: R2
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R2
+    restriction: Boolean value `False`
+    scope: 1
+  message: 'Detected: Boolean value `False`'
+  pattern: 'False'
+- id: R3
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R3
+    restriction: Boolean conversion `bool()`
+    scope: 1
+  message: 'Detected: Boolean conversion `bool()`'
+  pattern-either:
+  - pattern: bool(...)
+- id: R4
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R4
+    restriction: Equality comparison `==`
+    scope: 1
+  message: 'Detected: Equality comparison `==`'
+  pattern: $X == $Y
+- id: R5
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R5
+    restriction: Inequality comparison `!=`
+    scope: 1
+  message: 'Detected: Inequality comparison `!=`'
+  pattern: $X != $Y
+- id: R6_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R6_candidate
+    restriction: Less-than `<`
+    scope: 1
+  message: 'Detected: Less-than `<`'
+  pattern: $X < $Y
+- id: R7_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R7_candidate
+    restriction: Less-than-or-equal `<=`
+    scope: 1
+  message: 'Detected: Less-than-or-equal `<=`'
+  pattern: $X <= $Y
+- id: R8_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R8_candidate
+    restriction: Greater-than `>`
+    scope: 1
+  message: 'Detected: Greater-than `>`'
+  pattern: $X > $Y
+- id: R9_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R9_candidate
+    restriction: Greater-than-or-equal `>=`
+    scope: 1
+  message: 'Detected: Greater-than-or-equal `>=`'
+  pattern: $X >= $Y
+- id: R11
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R11
+    restriction: Identity comparison `is`
+    scope: 1
+  message: 'Detected: Identity comparison `is`'
+  pattern: $X is $Y
+- id: R12
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R12
+    restriction: Negative identity `is not`
+    scope: 1
+  message: 'Detected: Negative identity `is not`'
+  pattern: $X is not $Y
+- id: R13
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R13
+    restriction: Membership test `in`
+    scope: 1
+  message: 'Detected: Membership test `in`'
+  pattern: $X in $Y
+- id: R14
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R14
+    restriction: Negative membership `not in`
+    scope: 1
+  message: 'Detected: Negative membership `not in`'
+  pattern: $X not in $Y
+- id: R15
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R15
+    restriction: Boolean AND `and`
+    scope: 1
+  message: 'Detected: Boolean AND `and`'
+  pattern: $X and $Y
+- id: R16
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R16
+    restriction: Boolean OR `or`
+    scope: 1
+  message: 'Detected: Boolean OR `or`'
+  pattern: $X or $Y
+- id: R17
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R17
+    restriction: Boolean NOT `not`
+    scope: 1
+  message: 'Detected: Boolean NOT `not`'
+  pattern: not $X
+- id: R18
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R18
+    restriction: Conditional branching `if` (`elif`, `else`, ternary)
+    scope: 1
+  message: 'Detected: Conditional branching `if` (`elif`, `else`, ternary)'
+  pattern-either:
+  - pattern: 'if $C: ...'
+  - pattern: $A if $C else $B
+- id: R19
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R19
+    restriction: Type check `isinstance()`
+    scope: 1
+  message: 'Detected: Type check `isinstance()`'
+  pattern-either:
+  - pattern: isinstance(...)
+- id: R20
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R20
+    restriction: Length function `len()`
+    scope: 1
+  message: 'Detected: Length function `len()`'
+  pattern-either:
+  - pattern: len(...)
+- id: R21
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R21
+    restriction: Char-to-code `ord()`
+    scope: 1
+  message: 'Detected: Char-to-code `ord()`'
+  pattern-either:
+  - pattern: ord(...)
+- id: R22
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R22
+    restriction: Code-to-char `chr()`
+    scope: 1
+  message: 'Detected: Code-to-char `chr()`'
+  pattern-either:
+  - pattern: chr(...)
+- id: R23
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R23
+    restriction: Generic shallow copy `copy.copy()`
+    scope: 1
+  message: 'Detected: Generic shallow copy `copy.copy()`'
+  pattern: copy.copy(...)
+- id: R24
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R24
+    restriction: Sequence indexing `sequence[i]`
+    scope: 1
+  message: 'Detected: Sequence indexing `sequence[i]`'
+  pattern: $X[$Y]
+- id: R25_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R25_candidate
+    restriction: Negative indexing `sequence[-1]`
+    scope: 1
+  message: 'Detected: Negative indexing `sequence[-1]`'
+  patterns:
+  - pattern: $X[$Y]
+  - metavariable-regex:
+      metavariable: $Y
+      regex: ^-
+- id: R26
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R26
+    restriction: str method `lower()`
+    scope: 1
+  message: 'Detected: str method `lower()`'
+  pattern-either:
+  - pattern: $X.lower(...)
+- id: R27
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R27
+    restriction: str method `upper()`
+    scope: 1
+  message: 'Detected: str method `upper()`'
+  pattern-either:
+  - pattern: $X.upper(...)
+- id: R28
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R28
+    restriction: str method `title()`
+    scope: 1
+  message: 'Detected: str method `title()`'
+  pattern-either:
+  - pattern: $X.title(...)
+- id: R29
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R29
+    restriction: str method `swapcase()`
+    scope: 1
+  message: 'Detected: str method `swapcase()`'
+  pattern-either:
+  - pattern: $X.swapcase(...)
+- id: R30
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R30
+    restriction: str method `replace()`
+    scope: 1
+  message: 'Detected: str method `replace()`'
+  pattern-either:
+  - pattern: $X.replace(...)
+- id: R31
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R31
+    restriction: str method `find()`
+    scope: 1
+  message: 'Detected: str method `find()`'
+  pattern-either:
+  - pattern: $X.find(...)
+- id: R32_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R32_candidate
+    restriction: str method `count()`
+    scope: 1
+  message: 'Detected: str method `count()`'
+  pattern: $X.count(...)
+- id: R33
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R33
+    restriction: str method `format()`
+    scope: 1
+  message: 'Detected: str method `format()`'
+  pattern-either:
+  - pattern: $X.format(...)
+- id: R34
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R34
+    restriction: f-strings `f"..."`
+    scope: 1
+  message: 'Detected: f-strings `f"..."`'
+  pattern: f"..."
+- id: R35
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R35
+    restriction: Dictionary constructor `dict()`
+    scope: 1
+  message: 'Detected: Dictionary constructor `dict()`'
+  pattern-either:
+  - pattern: dict(...)
+- id: R37
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R37
+    restriction: dict method `get()`
+    scope: 1
+  message: 'Detected: dict method `get()`'
+  pattern-either:
+  - pattern: $X.get(...)
+- id: R38
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R38
+    restriction: Loop `while`
+    scope: 2
+  message: 'Detected: Loop `while`'
+  pattern: 'while $C: ...'
+- id: R39
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R39
+    restriction: Loop `for`
+    scope: 2
+  message: 'Detected: Loop `for`'
+  pattern: 'for $X in $Y: ...'
+- id: R40
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R40
+    restriction: Integer sequence `range()`
+    scope: 2
+  message: 'Detected: Integer sequence `range()`'
+  pattern-either:
+  - pattern: range(...)
+- id: R41
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R41
+    restriction: Deletion statement `del`
+    scope: 2
+  message: 'Detected: Deletion statement `del`'
+  pattern: del $X
+- id: R43_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R43_candidate
+    restriction: String slicing `s[i:j:k]`
+    scope: 2
+  message: 'Detected: String slicing `s[i:j:k]`'
+  pattern-either:
+  - pattern: $X[$A:$B]
+  - pattern: $X[$A:]
+  - pattern: $X[:$B]
+  - pattern: $X[:]
+  - pattern: $X[$A:$B:$C]
+  - pattern: $X[::$C]
+  - pattern: $X[$A::$C]
+  - pattern: $X[:$B:$C]
+- id: R44
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R44
+    restriction: str method `split()`
+    scope: 2
+  message: 'Detected: str method `split()`'
+  pattern-either:
+  - pattern: $X.split(...)
+- id: R45
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R45
+    restriction: str method `join()`
+    scope: 2
+  message: 'Detected: str method `join()`'
+  pattern-either:
+  - pattern: $X.join(...)
+- id: R46
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R46
+    restriction: str method `strip()`
+    scope: 2
+  message: 'Detected: str method `strip()`'
+  pattern-either:
+  - pattern: $X.strip(...)
+- id: R47
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R47
+    restriction: List constructor `list()`
+    scope: 2
+  message: 'Detected: List constructor `list()`'
+  pattern-either:
+  - pattern: list(...)
+- id: R50_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R50_candidate
+    restriction: List repetition `lst * n`
+    scope: 2
+  message: 'Detected: List repetition `lst * n`'
+  pattern: $X * $Y
+- id: R51_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R51_candidate
+    restriction: List concatenation `lst1 + lst2`
+    scope: 2
+  message: 'Detected: List concatenation `lst1 + lst2`'
+  pattern: $X + $Y
+- id: R52
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R52
+    restriction: list method `append()`
+    scope: 2
+  message: 'Detected: list method `append()`'
+  pattern-either:
+  - pattern: $X.append(...)
+- id: R53
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R53
+    restriction: list method `insert()`
+    scope: 2
+  message: 'Detected: list method `insert()`'
+  pattern-either:
+  - pattern: $X.insert(...)
+- id: R54
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R54
+    restriction: list method `extend()`
+    scope: 2
+  message: 'Detected: list method `extend()`'
+  pattern-either:
+  - pattern: $X.extend(...)
+- id: R55_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R55_candidate
+    restriction: list method `remove()`
+    scope: 2
+  message: 'Detected: list method `remove()`'
+  pattern: $X.remove(...)
+- id: R56_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R56_candidate
+    restriction: list method `pop()`
+    scope: 2
+  message: 'Detected: list method `pop()`'
+  pattern: $X.pop(...)
+- id: R57_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R57_candidate
+    restriction: list method `clear()`
+    scope: 2
+  message: 'Detected: list method `clear()`'
+  pattern: $X.clear(...)
+- id: R58_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R58_candidate
+    restriction: list method `index()`
+    scope: 2
+  message: 'Detected: list method `index()`'
+  pattern: $X.index(...)
+- id: R60
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R60
+    restriction: list method `sort()`
+    scope: 2
+  message: 'Detected: list method `sort()`'
+  pattern-either:
+  - pattern: $X.sort(...)
+- id: R61
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R61
+    restriction: list method `reverse()`
+    scope: 2
+  message: 'Detected: list method `reverse()`'
+  pattern-either:
+  - pattern: $X.reverse(...)
+- id: R62_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R62_candidate
+    restriction: list method `copy()`
+    scope: 2
+  message: 'Detected: list method `copy()`'
+  pattern: $X.copy(...)
+- id: R64
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R64
+    restriction: dict method `keys()`
+    scope: 2
+  message: 'Detected: dict method `keys()`'
+  pattern-either:
+  - pattern: $X.keys(...)
+- id: R65
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R65
+    restriction: dict method `values()`
+    scope: 2
+  message: 'Detected: dict method `values()`'
+  pattern-either:
+  - pattern: $X.values(...)
+- id: R66
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R66
+    restriction: Context manager `with`
+    scope: 2
+  message: 'Detected: Context manager `with`'
+  pattern-either:
+  - pattern: 'with $X: ...'
+  - pattern: 'with $X as $Y: ...'
+- id: R67
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R67
+    restriction: File opening `open()`
+    scope: 2
+  message: 'Detected: File opening `open()`'
+  pattern-either:
+  - pattern: open(...)
+- id: R68
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R68
+    restriction: File reading `read()`/`readline()`/`readlines()`
+    scope: 2
+  message: 'Detected: File reading `read()`/`readline()`/`readlines()`'
+  pattern-either:
+  - pattern: $X.read(...)
+  - pattern: $X.readline(...)
+  - pattern: $X.readlines(...)
+- id: R69
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R69
+    restriction: File writing `write()`/`writelines()`
+    scope: 2
+  message: 'Detected: File writing `write()`/`writelines()`'
+  pattern-either:
+  - pattern: $X.write(...)
+  - pattern: $X.writelines(...)
+- id: R70
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R70
+    restriction: File closing `close()`
+    scope: 2
+  message: 'Detected: File closing `close()`'
+  pattern-either:
+  - pattern: $X.close(...)
+- id: R71
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R71
+    restriction: '`csv` module'
+    scope: 2
+  message: 'Detected: `csv` module'
+  pattern-either:
+  - pattern: import csv
+  - pattern: from csv import $X
+- id: R72
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R72
+    restriction: Tuple constructor `tuple()`
+    scope: 3
+  message: 'Detected: Tuple constructor `tuple()`'
+  pattern-either:
+  - pattern: tuple(...)
+- id: R76
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R76
+    restriction: dict method `items()`
+    scope: 3
+  message: 'Detected: dict method `items()`'
+  pattern-either:
+  - pattern: $X.items(...)
+- id: R77
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R77
+    restriction: '`datetime` module'
+    scope: 3
+  message: 'Detected: `datetime` module'
+  pattern-either:
+  - pattern: import datetime
+  - pattern: from datetime import $X
+- id: R78
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R78
+    restriction: '`time` module'
+    scope: 3
+  message: 'Detected: `time` module'
+  pattern-either:
+  - pattern: import time
+  - pattern: from time import $X
+- id: R79
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R79
+    restriction: NumPy
+    scope: 3
+  message: 'Detected: NumPy'
+  pattern-either:
+  - pattern: import numpy
+  - pattern: from numpy import $X
+- id: R80
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R80
+    restriction: pandas
+    scope: 3
+  message: 'Detected: pandas'
+  pattern-either:
+  - pattern: import pandas
+  - pattern: from pandas import $X
+- id: R81
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R81
+    restriction: Matplotlib
+    scope: 3
+  message: 'Detected: Matplotlib'
+  pattern-either:
+  - pattern: import matplotlib
+  - pattern: from matplotlib import $X
+  - pattern: import matplotlib.pyplot
+  - pattern: from matplotlib.pyplot import $X
+  - pattern: from matplotlib import $X
+- id: R84
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R84
+    restriction: Summation `sum()`
+    scope: 4
+  message: 'Detected: Summation `sum()`'
+  pattern-either:
+  - pattern: sum(...)
+- id: R85
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R85
+    restriction: Sorted copy `sorted()`
+    scope: 4
+  message: 'Detected: Sorted copy `sorted()`'
+  pattern-either:
+  - pattern: sorted(...)
+- id: R87
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R87
+    restriction: str method `rfind()`
+    scope: 4
+  message: 'Detected: str method `rfind()`'
+  pattern-either:
+  - pattern: $X.rfind(...)
+- id: R88
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R88
+    restriction: str method `rindex()`
+    scope: 4
+  message: 'Detected: str method `rindex()`'
+  pattern-either:
+  - pattern: $X.rindex(...)
+- id: R89
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R89
+    restriction: str method `startswith()`
+    scope: 4
+  message: 'Detected: str method `startswith()`'
+  pattern-either:
+  - pattern: $X.startswith(...)
+- id: R90
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R90
+    restriction: str method `endswith()`
+    scope: 4
+  message: 'Detected: str method `endswith()`'
+  pattern-either:
+  - pattern: $X.endswith(...)
+- id: R91
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R91
+    restriction: str predicates `isdigit()`, `isalpha()`, ...
+    scope: 4
+  message: 'Detected: str predicates `isdigit()`, `isalpha()`, ...'
+  pattern-either:
+  - pattern: $X.isdigit(...)
+  - pattern: $X.isalpha(...)
+  - pattern: $X.isalnum(...)
+  - pattern: $X.isspace(...)
+  - pattern: $X.isupper(...)
+  - pattern: $X.islower(...)
+  - pattern: $X.istitle(...)
+  - pattern: $X.isnumeric(...)
+  - pattern: $X.isdecimal(...)
+  - pattern: $X.isidentifier(...)
+  - pattern: $X.isprintable(...)
+  - pattern: $X.isascii(...)
+- id: R92
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R92
+    restriction: str method `capitalize()`
+    scope: 4
+  message: 'Detected: str method `capitalize()`'
+  pattern-either:
+  - pattern: $X.capitalize(...)
+- id: R93
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R93
+    restriction: str method `casefold()`
+    scope: 4
+  message: 'Detected: str method `casefold()`'
+  pattern-either:
+  - pattern: $X.casefold(...)
+- id: R94
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R94
+    restriction: str method `rsplit()`
+    scope: 4
+  message: 'Detected: str method `rsplit()`'
+  pattern-either:
+  - pattern: $X.rsplit(...)
+- id: R95
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R95
+    restriction: str method `partition()`
+    scope: 4
+  message: 'Detected: str method `partition()`'
+  pattern-either:
+  - pattern: $X.partition(...)
+- id: R96
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R96
+    restriction: str method `rpartition()`
+    scope: 4
+  message: 'Detected: str method `rpartition()`'
+  pattern-either:
+  - pattern: $X.rpartition(...)
+- id: R97
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R97
+    restriction: str method `splitlines()`
+    scope: 4
+  message: 'Detected: str method `splitlines()`'
+  pattern-either:
+  - pattern: $X.splitlines(...)
+- id: R98
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R98
+    restriction: str method `lstrip()`
+    scope: 4
+  message: 'Detected: str method `lstrip()`'
+  pattern-either:
+  - pattern: $X.lstrip(...)
+- id: R99
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R99
+    restriction: str method `rstrip()`
+    scope: 4
+  message: 'Detected: str method `rstrip()`'
+  pattern-either:
+  - pattern: $X.rstrip(...)
+- id: R100
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R100
+    restriction: str method `removeprefix()`
+    scope: 4
+  message: 'Detected: str method `removeprefix()`'
+  pattern-either:
+  - pattern: $X.removeprefix(...)
+- id: R101
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R101
+    restriction: str method `removesuffix()`
+    scope: 4
+  message: 'Detected: str method `removesuffix()`'
+  pattern-either:
+  - pattern: $X.removesuffix(...)
+- id: R102
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R102
+    restriction: str methods `translate()`/`maketrans()`
+    scope: 4
+  message: 'Detected: str methods `translate()`/`maketrans()`'
+  pattern-either:
+  - pattern: $X.translate(...)
+  - pattern: $X.maketrans(...)
+- id: R103
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R103
+    restriction: str method `format_map()`
+    scope: 4
+  message: 'Detected: str method `format_map()`'
+  pattern-either:
+  - pattern: $X.format_map(...)
+- id: R104
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R104
+    restriction: str method `zfill()`
+    scope: 4
+  message: 'Detected: str method `zfill()`'
+  pattern-either:
+  - pattern: $X.zfill(...)
+- id: R105
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R105
+    restriction: str method `ljust()`
+    scope: 4
+  message: 'Detected: str method `ljust()`'
+  pattern-either:
+  - pattern: $X.ljust(...)
+- id: R106
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R106
+    restriction: str method `rjust()`
+    scope: 4
+  message: 'Detected: str method `rjust()`'
+  pattern-either:
+  - pattern: $X.rjust(...)
+- id: R107
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R107
+    restriction: str method `center()`
+    scope: 4
+  message: 'Detected: str method `center()`'
+  pattern-either:
+  - pattern: $X.center(...)
+- id: R108
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R108
+    restriction: str method `expandtabs()`
+    scope: 4
+  message: 'Detected: str method `expandtabs()`'
+  pattern-either:
+  - pattern: $X.expandtabs(...)
+- id: R109
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R109
+    restriction: str method `encode()`
+    scope: 4
+  message: 'Detected: str method `encode()`'
+  pattern-either:
+  - pattern: $X.encode(...)
+- id: R110
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R110
+    restriction: List comprehension
+    scope: 4
+  message: 'Detected: List comprehension'
+  pattern: '[$X for $Y in $Z]'
+- id: R113_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R113_candidate
+    restriction: dict method `update()`
+    scope: 4
+  message: 'Detected: dict method `update()`'
+  pattern: $X.update(...)
+- id: R114
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R114
+    restriction: dict method `setdefault()`
+    scope: 4
+  message: 'Detected: dict method `setdefault()`'
+  pattern-either:
+  - pattern: $X.setdefault(...)
+- id: R115
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R115
+    restriction: dict method `fromkeys()`
+    scope: 4
+  message: 'Detected: dict method `fromkeys()`'
+  pattern-either:
+  - pattern: $X.fromkeys(...)
+- id: R116
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R116
+    restriction: dict method `popitem()`
+    scope: 4
+  message: 'Detected: dict method `popitem()`'
+  pattern-either:
+  - pattern: $X.popitem(...)
+- id: R117
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R117
+    restriction: Dictionary comprehension
+    scope: 4
+  message: 'Detected: Dictionary comprehension'
+  pattern: '{$K: $V for $X in $Y}'
+- id: R119
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R119
+    restriction: Set constructor `set()`
+    scope: 4
+  message: 'Detected: Set constructor `set()`'
+  pattern-either:
+  - pattern: set(...)
+- id: R120
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R120
+    restriction: Set comprehension
+    scope: 4
+  message: 'Detected: Set comprehension'
+  pattern: '{$X for $Y in $Z}'
+- id: R121
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R121
+    restriction: Immutable set `frozenset()`
+    scope: 4
+  message: 'Detected: Immutable set `frozenset()`'
+  pattern-either:
+  - pattern: frozenset(...)
+- id: R122
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R122
+    restriction: set method `add()`
+    scope: 4
+  message: 'Detected: set method `add()`'
+  pattern-either:
+  - pattern: $X.add(...)
+- id: R124
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R124
+    restriction: set method `discard()`
+    scope: 4
+  message: 'Detected: set method `discard()`'
+  pattern-either:
+  - pattern: $X.discard(...)
+- id: R128
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R128
+    restriction: set `union()` and `|`
+    scope: 4
+  message: 'Detected: set `union()` and `|`'
+  pattern-either:
+  - pattern: $X.union(...)
+- id: R129
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R129
+    restriction: set `intersection()` and `&`
+    scope: 4
+  message: 'Detected: set `intersection()` and `&`'
+  pattern-either:
+  - pattern: $X.intersection(...)
+- id: R130
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R130
+    restriction: set `difference()` and `-`
+    scope: 4
+  message: 'Detected: set `difference()` and `-`'
+  pattern-either:
+  - pattern: $X.difference(...)
+- id: R130_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R130_candidate
+    restriction: set `difference()` and `-`
+    scope: 4
+  message: 'Detected: set `difference()` and `-`'
+  pattern: $X - $Y
+- id: R131
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R131
+    restriction: set `symmetric_difference()` and `^`
+    scope: 4
+  message: 'Detected: set `symmetric_difference()` and `^`'
+  pattern-either:
+  - pattern: $X.symmetric_difference(...)
+- id: R133
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R133
+    restriction: set `intersection_update()` and `&=`
+    scope: 4
+  message: 'Detected: set `intersection_update()` and `&=`'
+  pattern-either:
+  - pattern: $X.intersection_update(...)
+- id: R134
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R134
+    restriction: set `difference_update()` and `-=`
+    scope: 4
+  message: 'Detected: set `difference_update()` and `-=`'
+  pattern-either:
+  - pattern: $X.difference_update(...)
+- id: R134_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R134_candidate
+    restriction: set `difference_update()` and `-=`
+    scope: 4
+  message: 'Detected: set `difference_update()` and `-=`'
+  pattern: $X -= $Y
+- id: R135
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R135
+    restriction: set `symmetric_difference_update()` and `^=`
+    scope: 4
+  message: 'Detected: set `symmetric_difference_update()` and `^=`'
+  pattern-either:
+  - pattern: $X.symmetric_difference_update(...)
+- id: R136
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R136
+    restriction: set `issubset()` and `<=`, `<`
+    scope: 4
+  message: 'Detected: set `issubset()` and `<=`, `<`'
+  pattern-either:
+  - pattern: $X.issubset(...)
+- id: R137
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R137
+    restriction: set `issuperset()` and `>=`, `>`
+    scope: 4
+  message: 'Detected: set `issuperset()` and `>=`, `>`'
+  pattern-either:
+  - pattern: $X.issuperset(...)
+- id: R138
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R138
+    restriction: set `isdisjoint()`
+    scope: 4
+  message: 'Detected: set `isdisjoint()`'
+  pattern-either:
+  - pattern: $X.isdisjoint(...)
+- id: R140
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R140
+    restriction: Loop termination `break`
+    scope: 4
+  message: 'Detected: Loop termination `break`'
+  pattern: break
+- id: R141
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R141
+    restriction: Next iteration `continue`
+    scope: 4
+  message: 'Detected: Next iteration `continue`'
+  pattern: continue
+- id: R142
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R142
+    restriction: Exception block `try`
+    scope: 4
+  message: 'Detected: Exception block `try`'
+  pattern-either:
+  - pattern: "try:\n    ...\nexcept $E:\n    ..."
+  - pattern: "try:\n    ...\nexcept $E as $N:\n    ..."
+  - pattern: "try:\n    ...\nexcept:\n    ..."
+  - pattern: "try:\n    ...\nfinally:\n    ..."
+- id: R143
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R143
+    restriction: Exception clause `except`
+    scope: 4
+  message: 'Detected: Exception clause `except`'
+  pattern-either:
+  - pattern: "try:\n    ...\nexcept $E:\n    ..."
+  - pattern: "try:\n    ...\nexcept $E as $N:\n    ..."
+  - pattern: "try:\n    ...\nexcept:\n    ..."
+- id: R145
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R145
+    restriction: Exception `raise`
+    scope: 4
+  message: 'Detected: Exception `raise`'
+  pattern: raise $X
+- id: R146
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R146
+    restriction: Condition verification `assert`
+    scope: 4
+  message: 'Detected: Condition verification `assert`'
+  pattern: assert $X
+- id: R147
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R147
+    restriction: Program termination `exit()`
+    scope: 4
+  message: 'Detected: Program termination `exit()`'
+  pattern-either:
+  - pattern: exit(...)
+- id: R151
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R151
+    restriction: Assignment expression `:=`
+    scope: 4
+  message: 'Detected: Assignment expression `:=`'
+  pattern-regex: :=
+- id: R152
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R152
+    restriction: Yield `yield`
+    scope: 4
+  message: 'Detected: Yield `yield`'
+  pattern: yield $X
+- id: R153
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R153
+    restriction: Generator expression
+    scope: 4
+  message: 'Detected: Generator expression'
+  pattern: ($X for $Y in $Z)
+- id: R154
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R154
+    restriction: Global scope `global`
+    scope: 4
+  message: 'Detected: Global scope `global`'
+  pattern: global $X
+- id: R155
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R155
+    restriction: Enclosing scope `nonlocal`
+    scope: 4
+  message: 'Detected: Enclosing scope `nonlocal`'
+  pattern: nonlocal $X
+- id: R157
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R157
+    restriction: Functional mapping `map()`
+    scope: 4
+  message: 'Detected: Functional mapping `map()`'
+  pattern-either:
+  - pattern: map(...)
+- id: R158
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R158
+    restriction: Functional filtering `filter()`
+    scope: 4
+  message: 'Detected: Functional filtering `filter()`'
+  pattern-either:
+  - pattern: filter(...)
+- id: R159
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R159
+    restriction: Cumulative reduction `reduce()`
+    scope: 4
+  message: 'Detected: Cumulative reduction `reduce()`'
+  pattern-either:
+  - pattern: reduce(...)
+- id: R160
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R160
+    restriction: Existential quantifier `any()`
+    scope: 4
+  message: 'Detected: Existential quantifier `any()`'
+  pattern-either:
+  - pattern: any(...)
+- id: R161
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R161
+    restriction: Universal quantifier `all()`
+    scope: 4
+  message: 'Detected: Universal quantifier `all()`'
+  pattern-either:
+  - pattern: all(...)
+- id: R162
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R162
+    restriction: Iterator creation `iter()`
+    scope: 4
+  message: 'Detected: Iterator creation `iter()`'
+  pattern-either:
+  - pattern: iter(...)
+- id: R163
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R163
+    restriction: Iterator advancement `next()`
+    scope: 4
+  message: 'Detected: Iterator advancement `next()`'
+  pattern-either:
+  - pattern: next(...)
+- id: R164
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R164
+    restriction: Index-value pairing `enumerate()`
+    scope: 4
+  message: 'Detected: Index-value pairing `enumerate()`'
+  pattern-either:
+  - pattern: enumerate(...)
+- id: R165
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R165
+    restriction: Parallel iteration `zip()`
+    scope: 4
+  message: 'Detected: Parallel iteration `zip()`'
+  pattern-either:
+  - pattern: zip(...)
+- id: R166
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R166
+    restriction: Class definition `class`
+    scope: 4
+  message: 'Detected: Class definition `class`'
+  pattern-either:
+  - pattern: 'class $C: ...'
+  - pattern: 'class $C($B): ...'
+- id: R167
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R167
+    restriction: Initializer `__init__()`
+    scope: 4
+  message: 'Detected: Initializer `__init__()`'
+  pattern: 'def __init__(...): ...'
+- id: R168
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R168
+    restriction: Inheritance and `super()`
+    scope: 4
+  message: 'Detected: Inheritance and `super()`'
+  pattern-either:
+  - pattern: super(...)
+- id: R169
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R169
+    restriction: Dunder methods `__str__`, `__repr__`, ...
+    scope: 4
+  message: 'Detected: Dunder methods `__str__`, `__repr__`, ...'
+  patterns:
+  - pattern: 'def $F(...): ...'
+  - metavariable-regex:
+      metavariable: $F
+      regex: ^__[A-Za-z0-9_]+__$
+- id: R172
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R172
+    restriction: Recursive copy `deepcopy()`
+    scope: 4
+  message: 'Detected: Recursive copy `deepcopy()`'
+  pattern-either:
+  - pattern: deepcopy(...)
+- id: R173
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R173
+    restriction: Complex numbers `complex`
+    scope: 4
+  message: 'Detected: Complex numbers `complex`'
+  pattern-either:
+  - pattern: complex(...)
+- id: R174
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R174
+    restriction: Binary types `bytes`/`bytearray`/`memoryview`
+    scope: 4
+  message: 'Detected: Binary types `bytes`/`bytearray`/`memoryview`'
+  pattern-either:
+  - pattern: bytes(...)
+  - pattern: bytearray(...)
+  - pattern: memoryview(...)
+- id: R175_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R175_candidate
+    restriction: Bitwise AND `&`
+    scope: 4
+  message: 'Detected: Bitwise AND `&`'
+  pattern: $X & $Y
+- id: R176_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R176_candidate
+    restriction: Bitwise OR `|`
+    scope: 4
+  message: 'Detected: Bitwise OR `|`'
+  pattern: $X | $Y
+- id: R177_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R177_candidate
+    restriction: Bitwise XOR `^`
+    scope: 4
+  message: 'Detected: Bitwise XOR `^`'
+  pattern: $X ^ $Y
+- id: R178
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R178
+    restriction: Bitwise inversion `~`
+    scope: 4
+  message: 'Detected: Bitwise inversion `~`'
+  pattern: ~$X
+- id: R179
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R179
+    restriction: Left shift `<<`
+    scope: 4
+  message: 'Detected: Left shift `<<`'
+  pattern: $X << $Y
+- id: R180
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R180
+    restriction: Right shift `>>`
+    scope: 4
+  message: 'Detected: Right shift `>>`'
+  pattern: $X >> $Y
+- id: R181_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R181_candidate
+    restriction: Bitwise AND assignment `&=`
+    scope: 4
+  message: 'Detected: Bitwise AND assignment `&=`'
+  pattern: $X &= $Y
+- id: R182_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R182_candidate
+    restriction: Bitwise OR assignment `|=`
+    scope: 4
+  message: 'Detected: Bitwise OR assignment `|=`'
+  pattern: $X |= $Y
+- id: R183_candidate
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R183_candidate
+    restriction: Bitwise XOR assignment `^=`
+    scope: 4
+  message: 'Detected: Bitwise XOR assignment `^=`'
+  pattern: $X ^= $Y
+- id: R184
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R184
+    restriction: Left-shift assignment `<<=`
+    scope: 4
+  message: 'Detected: Left-shift assignment `<<=`'
+  pattern: $X <<= $Y
+- id: R185
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R185
+    restriction: Right-shift assignment `>>=`
+    scope: 4
+  message: 'Detected: Right-shift assignment `>>=`'
+  pattern: $X >>= $Y
+- id: R186
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R186
+    restriction: Object identity `id()`
+    scope: 4
+  message: 'Detected: Object identity `id()`'
+  pattern-either:
+  - pattern: id(...)
+- id: R187
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R187
+    restriction: Namespace inspection `globals()`/`locals()`/`vars()`/`dir()`
+    scope: 4
+  message: 'Detected: Namespace inspection `globals()`/`locals()`/`vars()`/`dir()`'
+  pattern-either:
+  - pattern: globals(...)
+  - pattern: locals(...)
+  - pattern: vars(...)
+  - pattern: dir(...)
+- id: R188
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R188
+    restriction: Attribute reflection `getattr()`/`setattr()`/`hasattr()`
+    scope: 4
+  message: 'Detected: Attribute reflection `getattr()`/`setattr()`/`hasattr()`'
+  pattern-either:
+  - pattern: getattr(...)
+  - pattern: setattr(...)
+  - pattern: hasattr(...)
+- id: R189
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R189
+    restriction: Dunder attribute access `__dict__`/`__class__`
+    scope: 4
+  message: 'Detected: Dunder attribute access `__dict__`/`__class__`'
+  pattern-either:
+  - pattern: $X.__dict__
+  - pattern: $X.__class__
+- id: R190
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R190
+    restriction: Dynamic evaluation `eval()`
+    scope: 4
+  message: 'Detected: Dynamic evaluation `eval()`'
+  pattern-either:
+  - pattern: eval(...)
+- id: R191
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R191
+    restriction: Dynamic execution `exec()`
+    scope: 4
+  message: 'Detected: Dynamic execution `exec()`'
+  pattern-either:
+  - pattern: exec(...)
+- id: R192
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R192
+    restriction: Code compilation `compile()`
+    scope: 4
+  message: 'Detected: Code compilation `compile()`'
+  pattern-either:
+  - pattern: compile(...)
+- id: R193
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R193
+    restriction: '`re` module'
+    scope: 4
+  message: 'Detected: `re` module'
+  pattern-either:
+  - pattern: import re
+  - pattern: from re import $X
+- id: R194
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R194
+    restriction: '`collections` module'
+    scope: 4
+  message: 'Detected: `collections` module'
+  pattern-either:
+  - pattern: import collections
+  - pattern: from collections import $X
+- id: R195
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R195
+    restriction: '`itertools` module'
+    scope: 4
+  message: 'Detected: `itertools` module'
+  pattern-either:
+  - pattern: import itertools
+  - pattern: from itertools import $X
+- id: R196
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R196
+    restriction: '`functools` module'
+    scope: 4
+  message: 'Detected: `functools` module'
+  pattern-either:
+  - pattern: import functools
+  - pattern: from functools import $X
+- id: R197
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R197
+    restriction: '`operator` module'
+    scope: 4
+  message: 'Detected: `operator` module'
+  pattern-either:
+  - pattern: import operator
+  - pattern: from operator import $X
+- id: R198
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R198
+    restriction: '`decimal` and `fractions` modules'
+    scope: 4
+  message: 'Detected: `decimal` and `fractions` modules'
+  pattern-either:
+  - pattern: import decimal
+  - pattern: from decimal import $X
+  - pattern: import fractions
+  - pattern: from fractions import $X
+- id: R199
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R199
+    restriction: '`enum` module'
+    scope: 4
+  message: 'Detected: `enum` module'
+  pattern-either:
+  - pattern: import enum
+  - pattern: from enum import $X
+- id: R200
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R200
+    restriction: '`dataclasses` module'
+    scope: 4
+  message: 'Detected: `dataclasses` module'
+  pattern-either:
+  - pattern: import dataclasses
+  - pattern: from dataclasses import $X
+- id: R201
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R201
+    restriction: '`abc` module'
+    scope: 4
+  message: 'Detected: `abc` module'
+  pattern-either:
+  - pattern: import abc
+  - pattern: from abc import $X
+- id: R202
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R202
+    restriction: '`typing` module'
+    scope: 4
+  message: 'Detected: `typing` module'
+  pattern-either:
+  - pattern: import typing
+  - pattern: from typing import $X
+- id: R203
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R203
+    restriction: '`logging` module'
+    scope: 4
+  message: 'Detected: `logging` module'
+  pattern-either:
+  - pattern: import logging
+  - pattern: from logging import $X
+- id: R204
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R204
+    restriction: '`unittest` and `pytest`'
+    scope: 4
+  message: 'Detected: `unittest` and `pytest`'
+  pattern-either:
+  - pattern: import unittest
+  - pattern: from unittest import $X
+  - pattern: import pytest
+  - pattern: from pytest import $X
+- id: R205
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R205
+    restriction: '`argparse` module'
+    scope: 4
+  message: 'Detected: `argparse` module'
+  pattern-either:
+  - pattern: import argparse
+  - pattern: from argparse import $X
+- id: R206
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R206
+    restriction: '`pathlib` module'
+    scope: 4
+  message: 'Detected: `pathlib` module'
+  pattern-either:
+  - pattern: import pathlib
+  - pattern: from pathlib import $X
+- id: R207
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R207
+    restriction: '`pickle` module'
+    scope: 4
+  message: 'Detected: `pickle` module'
+  pattern-either:
+  - pattern: import pickle
+  - pattern: from pickle import $X
+- id: R208
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R208
+    restriction: '`os` module'
+    scope: 4
+  message: 'Detected: `os` module'
+  pattern-either:
+  - pattern: import os
+  - pattern: from os import $X
+- id: R209
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R209
+    restriction: '`sys` module'
+    scope: 4
+  message: 'Detected: `sys` module'
+  pattern-either:
+  - pattern: import sys
+  - pattern: from sys import $X
+- id: R210
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R210
+    restriction: '`sys.argv`'
+    scope: 4
+  message: 'Detected: `sys.argv`'
+  pattern: sys.argv
+- id: R211
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R211
+    restriction: '`subprocess` module'
+    scope: 4
+  message: 'Detected: `subprocess` module'
+  pattern-either:
+  - pattern: import subprocess
+  - pattern: from subprocess import $X
+- id: R212
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R212
+    restriction: Network access (`requests`/`urllib`/sockets)
+    scope: 4
+  message: 'Detected: Network access (`requests`/`urllib`/sockets)'
+  pattern-either:
+  - pattern: import requests
+  - pattern: from requests import $X
+  - pattern: import urllib
+  - pattern: from urllib import $X
+  - pattern: import socket
+  - pattern: from socket import $X
+- id: R213
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R213
+    restriction: '`threading` and `multiprocessing`'
+    scope: 4
+  message: 'Detected: `threading` and `multiprocessing`'
+  pattern-either:
+  - pattern: import threading
+  - pattern: from threading import $X
+  - pattern: import multiprocessing
+  - pattern: from multiprocessing import $X
+- id: R214
+  languages:
+  - python
+  severity: INFO
+  metadata:
+    rule_id: R214
+    restriction: Coroutines `async`/`await` and `asyncio`
+    scope: 4
+  message: 'Detected: Coroutines `async`/`await` and `asyncio`'
+  pattern-either:
+  - pattern: import asyncio
+  - pattern: from asyncio import $X
+  - pattern: 'async def $F(...): ...'
+  - pattern: await $X

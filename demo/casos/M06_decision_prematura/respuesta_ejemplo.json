@@ -1,0 +1,10 @@
+{
+  "veredicto": "SI",
+  "evidencia": [
+    {
+      "linea": 9,
+      "elemento": "if nota >= 3.0:"
+    }
+  ],
+  "razon": "La funcion retorna en la primera vuelta del bucle, contestando por un solo elemento."
+}

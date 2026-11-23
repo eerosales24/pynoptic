@@ -1,18 +1,37 @@
 [project]
 name = "pynoptic"
-version = "0.1.0"
+version = "1.0.0"
 description = "A profiler that combines static and dynamic metrics to build a multidimensional view of Python code."
 readme = "README.md"
 authors = [
-    { name = "DiegoMunevar2007", email = "d.munevar@uniandes.edu.co" },
-    { name = "eerosales24", email = "ee.rosales24@uniandes.edu.co"}
+    { name = "Eduardo Rosales", email = "ee.rosales24@uniandes.edu.co" },
+    { name = "Diego Munevar", email = "d.munevar@uniandes.edu.co" },
+    { name = "Eric Alarcon", email = "e.alarcond@uniandes.edu.co" },
 ]
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.11"
+keywords = ["static-analysis", "dynamic-analysis", "education", "cs1", "code-quality"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Education",
+    "Topic :: Software Development :: Quality Assurance",
+    "Typing :: Typed",
+]
 
 dependencies = [
     "dynapyt>=4.1.0",
     "semgrep>=1.177.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/eerosales24/pynoptic"
+Repository = "https://github.com/eerosales24/pynoptic"
+Issues = "https://github.com/eerosales24/pynoptic/issues"
 
 [project.scripts]
 pynoptic = "pynoptic.cli:main"
@@ -27,13 +46,16 @@ dev = [
 ]
 
 [build-system]
-requires = ["uv-build>=0.11.9,<0.13"]
+requires = ["uv-build>=0.11.9,<0.14"]
 build-backend = "uv_build"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-ra"
 filterwarnings = ["error"]
+markers = [
+    "slow: instruments and executes code; seconds per test, not milliseconds",
+]
 
 [tool.ruff]
 line-length = 100
@@ -55,5 +77,5 @@ module = ["dynapyt.*", "yaml"]
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
-module = ["pynoptic.dynamic.analysis"]
+module = ["pynoptic.dynamic.analysis", "pynoptic.metrics.dynamic.analysis"]
 disallow_subclassing_any = false

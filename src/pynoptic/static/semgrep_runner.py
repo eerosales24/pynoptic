@@ -37,11 +37,31 @@ def rules_path() -> Path:
 
 
 def _executable() -> list[str]:
-    """Return the command prefix used to invoke Semgrep."""
+    """Return the command prefix used to invoke Semgrep.
+
+    PATH is tried first, then the script directory next to the running
+    interpreter, which is where the console script lands in a virtual
+    environment that has not been activated.
+
+    Returns:
+        - The argument list that invokes the Semgrep CLI.
+
+    Raises:
+        - SemgrepError: when no Semgrep executable can be located. Running it
+          as ``python -m semgrep`` is not a fallback: Semgrep deprecated that
+          entry point in 1.38.0 and the project requires 1.177.0 or newer.
+    """
     found = shutil.which("semgrep")
     if found:
         return [found]
-    return [sys.executable, "-m", "semgrep"]
+    for candidate in ("semgrep.exe", "semgrep"):
+        sibling = Path(sys.executable).parent / candidate
+        if sibling.exists():
+            return [str(sibling)]
+    raise SemgrepError(
+        "semgrep executable not found on PATH or next to the interpreter at "
+        f"{sys.executable}"
+    )
 
 
 def _detection_from_result(result: dict[str, Any]) -> Detection | None:

@@ -16,6 +16,9 @@ The public surface is intentionally small::
 
 from __future__ import annotations
 
+from importlib.metadata import PackageNotFoundError
+from importlib.metadata import version as _metadata_version
+
 from .dynamic.runner import DynamicRun, run_dynamic
 from .engine import scan_file, scan_paths, scan_source, to_findings
 from .models import (
@@ -32,6 +35,7 @@ from .models import (
     Tool,
     Verdict,
 )
+from .profile import Profile, profile_file, profile_source
 from .restrictions import (
     get_restriction,
     restrictions,
@@ -40,7 +44,18 @@ from .restrictions import (
 )
 from .scan_multiple import ScanMultiple, ScanMultipleRecord
 
-__version__ = "0.1.0"
+#: Read from the installed distribution rather than written here, so the
+#: version exists in exactly one place: `pyproject.toml`. The CLI's
+#: `--version` reads this constant, so a hand-maintained copy that drifts
+#: from the packaging metadata makes the tool report a version it is not.
+#:
+#: The fallback is for running straight from a checkout that was never
+#: installed, where there is no distribution to ask. A test pins the two
+#: together so the literal cannot go stale unnoticed.
+try:
+    __version__ = _metadata_version("pynoptic")
+except PackageNotFoundError:  # pragma: no cover - only outside an install
+    __version__ = "1.0.0"
 
 __all__ = [
     "__version__",
@@ -68,4 +83,7 @@ __all__ = [
     "DynamicRun",
     "ScanMultiple",
     "ScanMultipleRecord",
+    "Profile",
+    "profile_file",
+    "profile_source",
 ]

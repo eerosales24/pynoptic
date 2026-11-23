@@ -1,0 +1,10 @@
+{
+  "veredicto": "SI",
+  "evidencia": [
+    {
+      "linea": 11,
+      "elemento": "encontrado = True"
+    }
+  ],
+  "razon": "El bucle sigue recorriendo despues de que la respuesta quedo decidida."
+}

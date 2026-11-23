@@ -1,0 +1,10 @@
+{
+  "veredicto": "SI",
+  "evidencia": [
+    {
+      "linea": 1,
+      "elemento": "descuento"
+    }
+  ],
+  "razon": "El cuerpo nunca lee el parametro descuento, asi que el resultado no puede depender de el."
+}

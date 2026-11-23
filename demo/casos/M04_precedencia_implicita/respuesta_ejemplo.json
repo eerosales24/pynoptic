@@ -1,0 +1,10 @@
+{
+  "veredicto": "SI",
+  "evidencia": [
+    {
+      "linea": 10,
+      "elemento": "return es_socio or compras > 5 and antiguedad > 2"
+    }
+  ],
+  "razon": "El and se evalua antes que el or sin que haya parentesis que lo indiquen."
+}

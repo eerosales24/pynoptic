@@ -1,0 +1,10 @@
+{
+  "veredicto": "SI",
+  "evidencia": [
+    {
+      "linea": 10,
+      "elemento": "prefijo = numeros[0:i + 1]"
+    }
+  ],
+  "razon": "La tajada crea una copia proporcional a la entrada en cada vuelta del bucle."
+}

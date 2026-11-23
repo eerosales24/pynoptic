@@ -14,7 +14,17 @@ htmlcov/
 dist/
 build/
 
+# Virtual environment
+.venv/
+
 # DynaPyt instrumentation artifacts
 *.py.orig
 dynapyt.json
 coverage.json
+
+# Scratch written by a dynamic run, inside its own temporary directory
+pynoptic_sandbox.json
+pynoptic_plan.json
+
+# Corpus scans write here by default
+*.jsonl

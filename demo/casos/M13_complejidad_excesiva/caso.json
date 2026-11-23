@@ -1,0 +1,8 @@
+{
+  "espera": "M13",
+  "nivel": 3,
+  "funcion": "contar_repetidos",
+  "descripcion": "complejidad excesiva",
+  "espera_resuelto": false,
+  "nota": "Una clase de crecimiento es una afirmacion sobre como escala el trabajo, y una sola entrada no la sostiene. La corrida mide el trabajo real (vueltas mas elementos recorridos dentro de llamadas en C) y deja el veredicto sin resolver, que es lo correcto."
+}

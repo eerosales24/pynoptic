@@ -1,0 +1,6 @@
+{
+  "espera": "M11",
+  "nivel": 3,
+  "funcion": "sumar_hasta",
+  "descripcion": "bucle infinito"
+}

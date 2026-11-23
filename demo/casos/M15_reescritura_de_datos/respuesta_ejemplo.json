@@ -1,0 +1,10 @@
+{
+  "veredicto": "SI",
+  "evidencia": [
+    {
+      "linea": 10,
+      "elemento": "area"
+    }
+  ],
+  "razon": "El area se calcula y se sobrescribe antes de que nada lea el primer valor."
+}

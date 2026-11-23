@@ -1,0 +1,6 @@
+{
+  "espera": "M04",
+  "nivel": 2,
+  "funcion": "tiene_beneficio",
+  "descripcion": "precedencia implicita"
+}

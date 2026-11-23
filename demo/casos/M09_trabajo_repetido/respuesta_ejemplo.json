@@ -1,0 +1,15 @@
+{
+  "veredicto": "SI",
+  "n": 2,
+  "evidencia": [
+    {
+      "linea": 10,
+      "elemento": "numeros"
+    },
+    {
+      "linea": 13,
+      "elemento": "numeros"
+    }
+  ],
+  "razon": "La lista se recorre dos veces cuando una sola pasada bastaba."
+}

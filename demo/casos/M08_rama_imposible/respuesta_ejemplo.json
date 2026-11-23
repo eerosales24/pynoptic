@@ -1,0 +1,10 @@
+{
+  "veredicto": "SI",
+  "evidencia": [
+    {
+      "linea": 10,
+      "elemento": "elif nota > 4.5:"
+    }
+  ],
+  "razon": "La rama con nota mayor a 4.5 es inalcanzable porque la anterior ya capturo esos valores."
+}

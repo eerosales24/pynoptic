@@ -1,0 +1,10 @@
+{
+  "veredicto": "SI",
+  "evidencia": [
+    {
+      "linea": 10,
+      "elemento": "contador, limite"
+    }
+  ],
+  "razon": "La variable de control del while nunca se modifica dentro del cuerpo."
+}

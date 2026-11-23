@@ -1,0 +1,12 @@
+{
+  "veredicto": "SI",
+  "clase_estudiante": "O(n^2)",
+  "clase_referencia": "O(n)",
+  "evidencia": [
+    {
+      "linea": 10,
+      "elemento": "count"
+    }
+  ],
+  "razon": "El count dentro del bucle recorre la lista completa en cada vuelta."
+}

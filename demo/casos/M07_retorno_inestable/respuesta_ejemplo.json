@@ -1,0 +1,14 @@
+{
+  "veredicto": "SI",
+  "evidencia": [
+    {
+      "linea": 11,
+      "elemento": "return i"
+    },
+    {
+      "linea": 9,
+      "elemento": "for i in range(len(nombres))"
+    }
+  ],
+  "razon": "Si el nombre no esta, el for termina y la funcion cae al final del cuerpo devolviendo None en vez de un entero."
+}

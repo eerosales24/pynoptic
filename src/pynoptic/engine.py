@@ -12,6 +12,7 @@ from pynoptic import static
 from pynoptic.dynamic.runner import DynamicRun, run_dynamic
 from pynoptic.models import Detection, Finding, Level, Location, Report
 from pynoptic.restrictions import get_restriction
+from pynoptic.sources import read_source
 from pynoptic.static import semgrep_runner
 from pynoptic.verdict import to_verdict
 
@@ -289,7 +290,7 @@ def scan_file(
     label = display_name or str(file_path)
 
     try:
-        source = file_path.read_text(encoding="utf-8")
+        source = read_source(file_path)
     except (OSError, UnicodeDecodeError):
         detections: list[Detection] = []
         syntax_error = True
@@ -339,7 +340,7 @@ def scan_paths(
     syntax_errors: set[str] = set()
     for file_path in file_paths:
         try:
-            source = file_path.read_text(encoding="utf-8")
+            source = read_source(file_path)
         except (OSError, UnicodeDecodeError):
             syntax_errors.add(str(file_path))
             continue

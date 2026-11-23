@@ -1,0 +1,10 @@
+{
+  "veredicto": "SI",
+  "evidencia": [
+    {
+      "linea": 8,
+      "elemento": "'vacio'"
+    }
+  ],
+  "razon": "El literal 'vacio' es un operando del or, de modo que la condicion siempre es verdadera."
+}
