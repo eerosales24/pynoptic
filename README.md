@@ -41,6 +41,8 @@ patterns and gives instructors a multidimensional view of student code.
 
 ## Repository structure
 
+It goes as follows
+
 ```
 src/pynoptic/
     restrictions.py       the 215-entry catalog, the single source of truth
